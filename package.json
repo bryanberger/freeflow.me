@@ -1,0 +1,19 @@
+{
+  "name": "freeflow.me",
+  "description": "1 freeflow a day site",
+  "version": "1.0.0",
+  "homepage": "http://freeflow.me",
+  "author": {
+    "name": "Bryan Berger",
+    "url": "http://bryanberger.com"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.2",
+    "grunt-contrib-less": "~0.8.1",
+    "grunt": "~0.4.0",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
