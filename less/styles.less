@@ -4,6 +4,7 @@
 @totalWidth: (@colWidth*@numCols) + @padding;
 @gutter: 0;
 @correction: 0;
+@correction2: 0.1;
 /*@correction: 0.5 / @totalWidth * 100 * 1%;*/
 
 .clearfix() {
@@ -152,6 +153,15 @@ img {
 		margin: 0 0.8em 0 0;
 	}
 
+	.container {
+		padding: 0 10px;
+	}
+
+	.grid1,
+	.grid2 {
+		width: 100%;
+	}
+
 }
 
 /*@media only screen and (min-width: 480px) {
@@ -164,10 +174,18 @@ img {
 
 }
 
+@media only screen and (min-width: 560px) {
+	.grid1,
+	.grid2 {
+		width: 50%;
+	}
+}
+
+
 @media only screen and (min-width: 768px) {
 	.grid1, .grid2 {
 		/*width: 50%;*/
-		width: 33.333333333333%;
+		width: 33.3% - @correction;
 	}
 
 	h1 {
@@ -185,6 +203,7 @@ img {
 		list-style: none;
 		.clearfix();
 	}
+
 	.social li {
 		margin-left: 0.8em;
 		float: left;
@@ -198,7 +217,7 @@ img {
 		width: 33.333333333333%;
 	}*/
 	.grid1, .grid2 {
-		width: 25%;
+		width: 25% - @correction;
 	}
 }
 
@@ -209,7 +228,12 @@ img {
 	}
 
 	.grid2 {
+		position: absolute;
 		width: 50% - @correction;
+	}
+
+	.alt2 {
+		margin-left: 50%;
 	}
 }
 
@@ -219,6 +243,17 @@ img {
 	}
 
 	.grid2 {
+		position: absolute;
 		width: 40% - @correction;
 	}
+
+	.alt2 {
+		margin:0;
+	}
+
+	.alt1 {
+		margin-left: 40%;
+	}
+
+
 }

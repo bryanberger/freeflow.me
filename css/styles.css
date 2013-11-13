@@ -135,6 +135,13 @@ img {
   ul.social li {
     margin: 0 0.8em 0 0;
   }
+  .container {
+    padding: 0 10px;
+  }
+  .grid1,
+  .grid2 {
+    width: 100%;
+  }
 }
 /*@media only screen and (min-width: 480px) {
 	.grid1, .grid2 {
@@ -142,11 +149,17 @@ img {
 	}
 }
 */
+@media only screen and (min-width: 560px) {
+  .grid1,
+  .grid2 {
+    width: 50%;
+  }
+}
 @media only screen and (min-width: 768px) {
   .grid1,
   .grid2 {
     /*width: 50%;*/
-    width: 33.333333333333%;
+    width: 33.3%;
   }
   h1 {
     float: left;
@@ -193,7 +206,11 @@ img {
     width: 25%;
   }
   .grid2 {
+    position: absolute;
     width: 50%;
+  }
+  .alt2 {
+    margin-left: 50%;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -201,6 +218,13 @@ img {
     width: 20%;
   }
   .grid2 {
+    position: absolute;
     width: 40%;
+  }
+  .alt2 {
+    margin: 0;
+  }
+  .alt1 {
+    margin-left: 40%;
   }
 }
