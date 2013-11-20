@@ -15,3 +15,9 @@ Route::get('/', function()
 {
 	return View::make('home', array('cdn_path' => 'https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'));
 });
+
+Route::get('/detail/{id}', function($id)
+{
+	return View::make('detail', array('id' => $id, 'cdn_path' => 'https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'));
+})
+->where('id', '[0-9]+');

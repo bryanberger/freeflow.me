@@ -42,8 +42,18 @@ module.exports = function(grunt) {
 		},
 
 		clean: {
-			"all": {
-				src: ["public/assets"]
+			all: {
+				files: [
+					// Delete all files except for all *.jpg and *.png in the imgs subdirectory
+					{
+						src: ['public/assets/**", "!public/assets/imgs/**/*.jpg", "!public/assets/imgs/**/*.png'],
+						filter: 'isFile'
+					},
+					// Delete some specific directories (and all their contents)
+					{
+						src: ['public/assets/css', 'public/assets/js']
+					}
+				]
 			}
 		},
 

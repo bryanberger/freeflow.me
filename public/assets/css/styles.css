@@ -407,7 +407,6 @@ ul#tmbs {
   display: table;
   clear: both;
   margin: 0 auto;
-  /*margin-left: -20px;*/
   padding: 0;
   list-style-type: none;
   content: "";
@@ -433,7 +432,7 @@ ul#tmbs {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-img {
+#tmbs li img {
   display: block;
   height: auto;
   border: 0;
