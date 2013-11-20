@@ -1,0 +1,113 @@
+/* Media Queries */
+/* ------------------------------------------------------------------------------------ */
+@media only screen and (min-width: 320px) and (max-width: 510px) {
+
+	header h1, ul.social {
+		display: block;
+		float: none;
+	}
+	ul.social {
+		margin: 0;
+	}
+	ul.social li {
+		margin: 0 0.8em 0 0;
+	}
+
+	.container {
+		padding: 0 10px;
+	}
+
+	.grid1,
+	.grid2 {
+		width: 100%;
+	}
+
+}
+
+@media only screen and (min-width: 480px) and (orientation:landscape) {
+
+}
+
+@media only screen and (min-width: 560px) {
+	.grid1,
+	.grid2 {
+		width: 50%;
+	}
+}
+
+
+@media only screen and (min-width: 768px) {
+	.grid1, .grid2 {
+		/*width: 50%;*/
+		width: 33.3% - @correction;
+	}
+
+	h1 {
+		float: left;
+		width: 287px;
+		height: 90px;
+		background: url('../imgs/logo.png') no-repeat;
+		text-indent: -9999px;
+	}
+
+	ul.social {
+		float: right;
+		padding: 0;
+		margin: 58px 0 0 0;
+		list-style: none;
+		.clearfix();
+	}
+
+	.social li {
+		margin-left: 0.8em;
+		float: left;
+		width: 50px;
+		height: 50px;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+/*	.grid1, .grid2 {
+		width: 33.333333333333%;
+	}*/
+	.grid1, .grid2 {
+		width: 25% - @correction;
+	}
+}
+
+/*@media only screen and (min-width: 1140px) {*/
+@media only screen and (min-width: 1120px) {
+	.grid1 {
+		width: 25% - @correction;
+	}
+
+	.grid2 {
+		position: absolute;
+		left: 0;
+		width: 50% - @correction;
+	}
+
+	.alt2 {
+		margin-left: 50%;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.grid1 {
+		width: 20% - @correction;
+	}
+
+	.grid2 {
+		position: absolute;
+		left: 0;
+		width: 40% - @correction;
+	}
+
+	.alt2 {
+		margin:0;
+	}
+
+	.alt1 {
+		margin-left: 40%;
+	}
+}
