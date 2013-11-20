@@ -1,6 +1,7 @@
 # Laravel
 /bootstrap/compiled.php
 /vendor
+CONTRIBUTING.md
 
 # Configuration
 /app/config
