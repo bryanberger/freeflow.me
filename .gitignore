@@ -1,4 +1,25 @@
+# Laravel
+/bootstrap/compiled.php
+/vendor
+
+# Configuration
+/app/config
+/app/config/local
+/app/config/staging
+/app/config/production
+
+# Composer
 composer.phar
+composer.lock
+
+# OS
+.DS_Store
+.idea/
+
+# Packages
+_ide_helpers.php
+
+# Misc
 node_modules
 psds
 test.html
