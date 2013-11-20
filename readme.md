@@ -14,3 +14,7 @@
 
     cd freeflow.me
 	composer install --dev
+
+
+### Step 3: nodejs & npm install
+	npm install
