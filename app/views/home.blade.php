@@ -2,7 +2,7 @@
 @section('content')
 <ul id="tmbs" class="row grid">
 	<!-- Today's freeflow -->
-	<li class="column grid2"><img src="{{ $cdn_path }}movember_560.jpg"></li>
+	<li class="column grid-first"><a href="/detail/1"><img src="{{ $cdn_path }}movember_560.jpg"></a></li>
 	<!-- 2nd item -->
 	<li class="column grid1 alt1 alt2"><img src="{{ $cdn_path }}wolfpack_560.jpg"></li>
 	<!-- 3rd item -->

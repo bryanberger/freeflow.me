@@ -18,7 +18,8 @@
 	}
 
 	.grid1,
-	.grid2 {
+	.grid2,
+	.grid-first {
 		width: 100%;
 	}
 
@@ -30,14 +31,17 @@
 
 @media only screen and (min-width: 560px) {
 	.grid1,
-	.grid2 {
+	.grid2,
+	.grid-first {
 		width: 50%;
 	}
 }
 
 
 @media only screen and (min-width: 768px) {
-	.grid1, .grid2 {
+	.grid1,
+	.grid2,
+	.grid-first {
 		/*width: 50%;*/
 		width: 33.3% - @correction;
 	}
@@ -70,7 +74,9 @@
 /*	.grid1, .grid2 {
 		width: 33.333333333333%;
 	}*/
-	.grid1, .grid2 {
+	.grid1,
+	.grid2,
+	.grid-first {
 		width: 25% - @correction;
 	}
 }
@@ -81,10 +87,18 @@
 		width: 25% - @correction;
 	}
 
-	.grid2 {
+	.grid-first {
 		position: absolute;
 		left: 0;
 		width: 50% - @correction;
+	}
+
+	.grid2 {
+		width: 50%;
+	}
+
+	.grid3 {
+		width: 75%;
 	}
 
 	.alt2 {
@@ -97,10 +111,18 @@
 		width: 20% - @correction;
 	}
 
-	.grid2 {
+	.grid-first {
 		position: absolute;
 		left: 0;
 		width: 40% - @correction;
+	}
+
+	.grid2 {
+		width: 40%;
+	}
+
+	.grid3 {
+		width: 60%;
 	}
 
 	.alt2 {

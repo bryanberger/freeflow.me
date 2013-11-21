@@ -1,15 +1,6 @@
 /* Layout */
 /* ------------------------------------------------------------------------------------ */
 
-@numCols: 5;
-@colWidth: 280px;
-@padding: 0;
-@totalWidth: (@colWidth*@numCols) + @padding;
-@gutter: 0;
-@correction: 0;
-@correction2: 0.1;
-/*@correction: 0.5 / @totalWidth * 100 * 1%;*/
-
 .container {
 	max-width: @totalWidth;
 	margin-right: auto;
@@ -26,7 +17,11 @@ ul#tmbs {
 	list-style-type: none;
 	content: "";	
 }
-.grid1, .grid2 {
+
+.grid-first,
+.grid1,
+.grid2,
+.grid3 {
 	display: inline-block;
 	float: left;
 	overflow: visible;
@@ -43,15 +38,12 @@ ul#tmbs {
 	box-sizing: border-box;
 }
 
-#tmbs li {
-	// position:relative;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-
-#tmbs li img {
+.grid-first img,
+.grid1 img,
+.grid2 img,
+.grid3 img,
+.grid4 img,
+.grid5 img {
 	display: block;
 	height: auto;
 	border: 0;

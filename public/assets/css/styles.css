@@ -338,6 +338,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+/*@correction: 0.5 / @totalWidth * 100 * 1%;*/
 /* Document */
 /* ------------------------------------------------------------------------------------ */
 h1 {
@@ -395,7 +396,6 @@ ul.social:after {
 }
 /* Layout */
 /* ------------------------------------------------------------------------------------ */
-/*@correction: 0.5 / @totalWidth * 100 * 1%;*/
 .container {
   max-width: 1400px;
   margin-right: auto;
@@ -411,8 +411,10 @@ ul#tmbs {
   list-style-type: none;
   content: "";
 }
+.grid-first,
 .grid1,
-.grid2 {
+.grid2,
+.grid3 {
   display: inline-block;
   float: left;
   overflow: visible;
@@ -427,12 +429,12 @@ ul#tmbs {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-#tmbs li {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-#tmbs li img {
+.grid-first img,
+.grid1 img,
+.grid2 img,
+.grid3 img,
+.grid4 img,
+.grid5 img {
   display: block;
   height: auto;
   border: 0;
@@ -461,19 +463,22 @@ ul#tmbs {
     padding: 0 10px;
   }
   .grid1,
-  .grid2 {
+  .grid2,
+  .grid-first {
     width: 100%;
   }
 }
 @media only screen and (min-width: 560px) {
   .grid1,
-  .grid2 {
+  .grid2,
+  .grid-first {
     width: 50%;
   }
 }
 @media only screen and (min-width: 768px) {
   .grid1,
-  .grid2 {
+  .grid2,
+  .grid-first {
     /*width: 50%;*/
     width: 33.3%;
   }
@@ -512,7 +517,8 @@ ul#tmbs {
 		width: 33.333333333333%;
 	}*/
   .grid1,
-  .grid2 {
+  .grid2,
+  .grid-first {
     width: 25%;
   }
 }
@@ -521,10 +527,16 @@ ul#tmbs {
   .grid1 {
     width: 25%;
   }
-  .grid2 {
+  .grid-first {
     position: absolute;
     left: 0;
     width: 50%;
+  }
+  .grid2 {
+    width: 50%;
+  }
+  .grid3 {
+    width: 75%;
   }
   .alt2 {
     margin-left: 50%;
@@ -534,10 +546,16 @@ ul#tmbs {
   .grid1 {
     width: 20%;
   }
-  .grid2 {
+  .grid-first {
     position: absolute;
     left: 0;
     width: 40%;
+  }
+  .grid2 {
+    width: 40%;
+  }
+  .grid3 {
+    width: 60%;
   }
   .alt2 {
     margin: 0;
@@ -545,4 +563,10 @@ ul#tmbs {
   .alt1 {
     margin-left: 40%;
   }
+}
+.details {
+  padding-left: 20px;
+}
+.details h2 {
+  margin-top: 0;
 }
