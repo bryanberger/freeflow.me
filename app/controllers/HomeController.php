@@ -1,23 +1,18 @@
 <?php
 
-class HomeController extends BaseController {
+class HomeController extends Controller {
+	
+	public function showIndex()
+	{	
+		$posts = Post::orderBy('created_at', 'DESC')->get();
+		$count = count($posts);
+		$args = array(
+			'posts' => $posts,
+			'count' => $count,
+			'cdn_path' => 'https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'
+		);
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
-
-	public function showWelcome()
-	{
-		return View::make('hello');
+    	return View::make('index', $args);
 	}
 
 }

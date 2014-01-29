@@ -9,6 +9,9 @@ CONTRIBUTING.md
 /app/config/staging
 /app/config/production
 
+# Database
+/app/database/
+
 # Composer
 composer.phar
 composer.lock

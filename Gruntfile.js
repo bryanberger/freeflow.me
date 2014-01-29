@@ -60,7 +60,8 @@ module.exports = function(grunt) {
 		less: {
 			dev: {
 				files: {
-					"public/assets/css/styles.css": "public/less/styles.less"
+					"public/assets/css/styles.css": "public/less/styles.less",
+					"public/assets/css/admin.css": "public/less/admin.less"
 				}
 			},
 			prod: {
@@ -69,7 +70,8 @@ module.exports = function(grunt) {
 					yuicompress: true
 				},
 				files: {
-					"public/assets/css/styles.min.css": "public/less/styles.less"
+					"public/assets/css/styles.min.css": "public/less/styles.less",
+					"public/assets/css/admin.min.css": "public/less/admin.less"
 				}
 			}
 		},

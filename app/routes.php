@@ -11,20 +11,31 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home', array(
-		'cdn_path' => 'https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'));
+// Main index
+Route::get('/', 'HomeController@showIndex');
+
+// Admin Routes
+Route::group(array('before' => 'auth.basic'), function(){
+    Route::resource('admin', 'AdminController');
 });
 
-Route::get('/detail/{id}', function($id)
+// Route::get('admin', array('before' => 'auth.basic',
+//             'uses' => 'AdminController@showIndex'));
+
+// Route::get('admin/edit/{id}', 'AdminController@showEdit')->where('id', '\d+');
+
+
+
+// detail routes
+Route::get('{name}', function($name)
 {
-	 if (empty($id)) {
+	 if (empty($name)) {
 	 	return Redirect::to('/');
 	 }
 
 	return View::make('detail', array(
-		'id' => $id,
+		'id' => $name,
 		'cdn_path' => 'https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'));
 })
-->where('id', '\d+');
+->where('name', '[a-z]+');
+

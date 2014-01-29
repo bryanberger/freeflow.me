@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Freeflow.me - 1 flow daily</title>
-		<meta name="description" content="">
+		<meta name="description" content="1 piece of art daily by Designer &amp; Developer Bryan Berger">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 		<meta property="og:title" content="Freeflow.me - 1 flow daily. A Project by Bryan Berger" />
@@ -34,6 +34,7 @@
 				<ul class="social">
 					<li><a href="http://twitter.com/bryanberger">{{HTML::image('assets/imgs/twitter.png')}}</a></li>
 					<li><a href="http://facebook.com/bryanbergerdesign">{{HTML::image('assets/imgs/facebook.png')}}</a></li>
+					<li><a href="http://behance.net/bryanberger">{{HTML::image('assets/imgs/behance.png')}}</a></li>
 				</ul>
 			</header>
 

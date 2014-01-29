@@ -15,10 +15,8 @@ class CreatePostsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name', 64)->unique();
-			$table->string('tags');
+			$table->string('tags'); // comma delimited
 			$table->string('filename');
-			$table->string('thumbnail');
-			$table->string('wallpaper');
 			$table->string('buy_small');
 			$table->string('buy_large');
 			$table->float('price_small');
