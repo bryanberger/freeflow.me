@@ -18,6 +18,9 @@ ClassLoader::addDirectories(array(
 	app_path().'/models',
 	app_path().'/database/seeds',
 
+	// custom
+	app_path().'/helpers'
+
 ));
 
 /*

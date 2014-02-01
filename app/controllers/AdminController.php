@@ -25,7 +25,7 @@ class AdminController extends \BaseController {
 			'cdn_path' => 'https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'
 		);
 
-    	return View::make('admin/index', $args);
+    	return View::make('admin.index', $args);
 	}
 
 	/**
@@ -35,17 +35,50 @@ class AdminController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.create');
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * validate the inputs
+	 * send back error messages if they exist
+	 * authenticate against the database
+	 * store the resource if all is good
+	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		//
+		// read more on validation at http://laravel.com/docs/validation
+		$rules = array(
+			'name'       	=> 'required|regex:/^[a-z0-9 ]+$/i',
+			'filename'		=> 'required|alpha_num',
+			'tags'		 	=> 'required|regex:/^[a-z,0-9 ]+$/i',
+			'hasWallpaper'	=> 'digits:1',
+			'hasBuyOptions'	=> 'digits:1'
+		);
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::to('admin/create')
+				->withErrors($validator)
+				->withInput();
+		} else {
+			// store
+			$post = new Post;
+			$post->name			 = Input::get('name');
+			$post->filename		 = strtolower(Input::get('filename'));
+			$post->tags			 = Input::get('tags');
+			$post->hasWallpaper  = Input::get('hasWallpaper', 0);
+			$post->hasBuyOptions = Input::get('hasBuyOptions', 0);
+			$post->save();
+
+			// redirect
+			Session::flash('message', 'Successfully created ' . $post->name);
+			return Redirect::to('admin');
+		}
 	}
 
 	/**
@@ -56,7 +89,7 @@ class AdminController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		// unneeded for this project
 	}
 
 	/**
@@ -84,7 +117,36 @@ class AdminController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		// validate
+		// read more on validation at http://laravel.com/docs/validation
+		$rules = array(
+			'name'       	=> 'required|regex:/^[a-z0-9 ]+$/i',
+			'filename'		=> 'required|alpha_num',
+			'tags'		 	=> 'required|regex:/^[a-z,0-9 ]+$/i',
+			'hasWallpaper'	=> 'digits:1',
+			'hasBuyOptions'	=> 'digits:1'
+		);
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::to('admin/' . $id . '/edit')
+				->withErrors($validator)
+				->withInput();
+		} else {
+			// store
+			$post = Post::find($id);
+			$post->name			 = Input::get('name');
+			$post->tags			 = Input::get('tags');
+			$post->filename		 = strtolower(Input::get('filename'));
+			$post->hasWallpaper  = Input::get('hasWallpaper', 0);
+			$post->hasBuyOptions = Input::get('hasBuyOptions', 0);
+			$post->save();
+
+			// redirect
+			Session::flash('message', 'Successfully updated ' . $post->name);
+			return Redirect::to('admin');
+		}
 	}
 
 	/**
@@ -95,7 +157,13 @@ class AdminController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// delete
+		$post = Post::find($id);
+		$post->delete();
+
+		// redirect
+		Session::flash('message', 'Successfully deleted ' . $post->name);
+		return Redirect::to('admin');
 	}
 
 }

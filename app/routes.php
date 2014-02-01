@@ -12,30 +12,28 @@
 */
 
 // Main index
-Route::get('/', 'HomeController@showIndex');
+Route::get('/', 'ViewController@showIndex');
 
 // Admin Routes
 Route::group(array('before' => 'auth.basic'), function(){
-    Route::resource('admin', 'AdminController');
+	Route::resource('admin', 'AdminController');
 });
 
-// Route::get('admin', array('before' => 'auth.basic',
-//             'uses' => 'AdminController@showIndex'));
-
-// Route::get('admin/edit/{id}', 'AdminController@showEdit')->where('id', '\d+');
-
-
+// detail route filter
+Route::filter('postExists', function($route) {
+	// get route name param
+	$name = $route->getParameter('name');
+	// see if it exists
+	$post = Post::where('filename', $name)->first();
+	if (is_null($post))
+	{
+	   return Redirect::to('/');
+	}
+});
 
 // detail routes
-Route::get('{name}', function($name)
-{
-	 if (empty($name)) {
-	 	return Redirect::to('/');
-	 }
-
-	return View::make('detail', array(
-		'id' => $name,
-		'cdn_path' => 'https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'));
-})
-->where('name', '[a-z]+');
-
+Route::get('{name}', array(
+	'as' 	 => 'post',
+	'uses'	 => 'ViewController@showDetail',
+	'before' => 'postExists'))
+		->where('name', '[a-z]+');

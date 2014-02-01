@@ -13,19 +13,26 @@
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
 					<a class="navbar-brand" href="{{ URL::to('admin') }}">Freeflow Admin Panel</a>
 				</div>
 				<div class="navbar-collapse collapse">
 				  <ul class="nav navbar-nav">
 					<li><a href="{{ URL::to('admin') }}">Home</a></li>
 					<li><a href="{{ URL::to('admin/create') }}">Create a Post</a>
+					<li><a href="{{ URL::to('/') }}">View Site</a>
 				  </ul>
 				</div><!--/.nav-collapse -->
 			</div>
 		</div>
 
 		<div class="container">
-			@yield('content');
+			@yield('content')
 		</div>
 	</body>
 </html>

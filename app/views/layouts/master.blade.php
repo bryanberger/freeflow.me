@@ -27,10 +27,10 @@
 		<!--[if lt IE 8]>
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
-	
+
 		<main role="main" class="container">
 			<header>
-				<h1>1 flow daily. A project by Bryan Berger</h1>
+				<a href="/"><h1>flow daily. A project by Bryan Berger</h1></a>
 				<ul class="social">
 					<li><a href="http://twitter.com/bryanberger">{{HTML::image('assets/imgs/twitter.png')}}</a></li>
 					<li><a href="http://facebook.com/bryanbergerdesign">{{HTML::image('assets/imgs/facebook.png')}}</a></li>

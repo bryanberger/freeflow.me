@@ -1,14 +1,11 @@
 @extends('layouts.admin.master')
 @section('content')
-<h1>Edit {{ $post->name }}</h1>
+<h1>Create a Post</h1>
 
 <!-- if there are creation errors, they will show here -->
 {{ HTML::ul($errors->all()) }}
 
-<!-- show image thumb -->
-<div class="admin-edit-thumb"><img src="{{ $cdn_path . $post->filename}}_560.jpg" width="280"></div>
-
-{{ Form::model($post, array('route' => array('admin.update', $post->id), 'method' => 'PUT', 'class' => 'form-horizontal')) }}
+{{ Form::open(array('url' => 'admin', 'class' => 'form-horizontal', 'role' => 'form')) }}
 	<div class="form-group">
 		{{ Form::label('name', 'Name', array('class' => 'col-sm-1 control-label')) }}
 		<div class="col-sm-4">
@@ -45,7 +42,7 @@
 
 	<div class="form-group">
 	    <div class="col-sm-offset-1 col-sm-4">
-	    	{{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
+	    	{{ Form::submit('Create', array('class' => 'btn btn-primary')) }}
 	    </div>
   	</div>	
 {{ Form::close() }}

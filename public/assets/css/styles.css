@@ -402,6 +402,16 @@ ul.social:after {
   margin-left: auto;
   padding: 0 40px;
 }
+.container:before,
+.container:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.container:after {
+  clear: both;
+}
 ul#tmbs {
   position: relative;
   display: table;
