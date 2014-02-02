@@ -20,20 +20,25 @@ Route::group(array('before' => 'auth.basic'), function(){
 });
 
 // detail route filter
-Route::filter('postExists', function($route) {
-	// get route name param
-	$name = $route->getParameter('name');
-	// see if it exists
-	$post = Post::where('filename', $name)->first();
-	if (is_null($post))
-	{
-	   return Redirect::to('/');
-	}
-});
+// Route::filter('postExists', function($route) {
+// 	// get route name param
+// 	$name = $route->getParameter('name');
+// 	// see if it exists
+// 	$post = Post::where('filename', $name)->first();
+// 	if (is_null($post))
+// 	{
+// 	   return Redirect::to('/');
+// 	}
+// });
 
 // detail routes
 Route::get('{name}', array(
 	'as' 	 => 'post',
-	'uses'	 => 'ViewController@showDetail',
-	'before' => 'postExists'))
-		->where('name', '[a-z]+');
+	'uses'	 => 'ViewController@showDetail'))
+		->where('name', '[a-z0-9]+');
+
+// Route::get('{name}', array(
+// 	'as' 	 => 'post',
+// 	'uses'	 => 'ViewController@showDetail',
+// 	'before' => 'postExists'))
+// 		->where('name', '[a-z]+');

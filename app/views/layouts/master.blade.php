@@ -15,7 +15,6 @@
 		<meta property="og:description" content="1 flow daily. I will be creating 1 piece a day for as long as possible! I call these freeflows as they are simply freeflow thoughts brought to life." />
 		<meta property="og:site_name" content="Freeflow.me - 1 flow daily" />
 
-		<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 		<link rel="shortcut icon" href="http://freeflow.me/favicon.ico">
 		{{ HTML::style('assets/css/styles.min.css'); }}
 		<!--[if lt IE 9]>
@@ -30,7 +29,7 @@
 
 		<main role="main" class="container">
 			<header>
-				<a href="/"><h1>flow daily. A project by Bryan Berger</h1></a>
+				<a href="/"><h1>1 flow daily. A project by Bryan Berger</h1></a>
 				<ul class="social">
 					<li><a href="http://twitter.com/bryanberger">{{HTML::image('assets/imgs/twitter.png')}}</a></li>
 					<li><a href="http://facebook.com/bryanbergerdesign">{{HTML::image('assets/imgs/facebook.png')}}</a></li>
@@ -43,6 +42,11 @@
 		</main>
 
 		<footer>
+			<span>&copy;</span>
+			<script type="text/javascript">
+				document.write(new Date().getFullYear());
+			</script>
+			<a href="http://bryanberger.com">Bryan Berger</a>. All Rights Reserved.
 		</footer>
 
 		<!-- Google Analytics -->

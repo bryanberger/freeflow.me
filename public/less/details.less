@@ -1,7 +1,111 @@
+a {
+	color: #3ca03d;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+hr {
+	margin: 0;
+	padding: 0;
+	height: 1px;
+	clear: both;
+	border: none;
+	color: #ccc;
+	background-color: #ccc;
+}
+
 .details {
-	padding-left: 20px;
+	padding-left: 40px;
+	.clearfix();
+}
+
+.details .title {
+
+	.clearfix();
 }
 
 .details h2 {
-	margin-top: 0;
+	float: left;
+	font-size: 2em;
+	margin: 0 0 5px 0;
+}
+
+.details .title ul {
+	margin-top: 6px;
+	float: right;
+	.clearfix();
+}
+
+.details .title ul li {
+	float: left;
+}
+
+.details .title ul li.next {
+	margin-left: 14px;
+}
+
+.details p {
+	line-height: 1.6;
+}
+
+.details ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.details dd, dt, dl {
+	margin:  0;
+	padding: 0;
+}
+
+.details .date {
+	margin: 0 0 10px 0;  // this plus the margin-top of the .tag itself = 20px
+	font-style: italic;
+	color: #999;
+}
+
+.details .date span {
+	color: #555;
+}
+
+ul.tags {
+	margin-bottom: 20px;
+	.clearfix();
+}
+
+.tag {
+	float: left;
+	padding: 4px 8px;
+	margin: 5px 5px 0 0;
+	background: #333;
+	color: #fff;
+}
+
+.sale {
+	margin-top: 20px;
+}
+
+.sale-not-avail {
+	font-style: italic;
+}
+
+.details .shipping {
+	margin-bottom: 20px;
+}
+
+td.shipping-location {
+	padding-right: 20px;
+}
+
+td.title {
+	padding: 0 0 15px 0;
+}
+
+p.print-desc {
+	padding: 0;
+	margin: 20px 0;
 }
