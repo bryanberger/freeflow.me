@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="no-js">
 	<head>
@@ -25,7 +26,7 @@
 				  <ul class="nav navbar-nav">
 					<li><a href="{{ URL::to('admin') }}">Home</a></li>
 					<li><a href="{{ URL::to('admin/create') }}">Create a Post</a>
-					<li><a href="{{ URL::to('/') }}">View Site</a>
+					<li><a href="{{ URL::to('/') }}" target="_blank">View Site</a>
 				  </ul>
 				</div><!--/.nav-collapse -->
 			</div>
