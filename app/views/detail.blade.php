@@ -18,6 +18,7 @@
 	</div>
 
 	<p title="the time this post was created" class="date">This piece was created <span>{{ TimeAgo::time_passed($post->created_at) }}</span> and is #{{ $post->sequence_number }} of {{ $max_days }}</p>
+	
 	<ul class="tags">
 	@foreach ($tags as $tag)
 		<li class="tag">{{ $tag }}</li>
