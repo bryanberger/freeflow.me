@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="grid3">
+<div class="grid3 detail-col">
 	<img src="{{ $cdn_path }}840/{{ $post->filename }}_840.jpg" alt="{{ $post->name }}" width="840">
 </div>
-<div class="grid2 details">
+<div class="grid2 details detail-col">
 	<div class="title">
 		<h2>{{ $post->name }}</h2>
 		<ul>
@@ -54,7 +54,12 @@
 		  </tbody>
 		</table>
 	@else
-		<p class="sale-not-avail">Sorry, this piece is currently not available for purchase :(</p>
+		<p class="sale-not-avail">
+		Sorry, all pieces are currently on hold for purchase while I source out the best print supplier. <br><br>
+		All prints will be printed on High quality Kodak Professional Endura Paper with a Lustre finish. A half inch white border
+		will be added.<br><br>
+		Available print sizes: 12x12in. &amp; 24x24in.
+		</p>
 	@endif
 
 	<hr>
