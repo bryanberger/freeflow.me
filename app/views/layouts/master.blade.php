@@ -17,6 +17,7 @@
 		<meta property="og:site_name" content="Freeflow.me - Daily artwork" />
 
 		<link rel="shortcut icon" href="http://freeflow.me/favicon.ico">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		{{ HTML::style('assets/css/styles.min.css'); }}
 		<!--[if lt IE 9]>
 			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -47,7 +48,7 @@
 			<script type="text/javascript">
 				document.write(new Date().getFullYear());
 			</script>
-			<a href="http://bryanberger.com">Bryan Berger</a>. All Rights Reserved. Project inspired by @justinmaller
+			<a href="http://bryanberger.com">Bryan Berger</a>, <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/deed.en_US">Creative Commons BY-NC-ND 4.0</a>. Project inspired by @justinmaller
 		</footer>
 
 		<!-- Google Analytics -->
@@ -59,5 +60,8 @@
 			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
 			ga('create','UA-640481-18');ga('send','pageview');
 		</script>
+
+		<!-- custom js -->
+		{{ HTML::script('assets/js/freeflow.me.min.js'); }}
 	</body>
 </html>

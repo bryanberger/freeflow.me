@@ -6,8 +6,6 @@ CONTRIBUTING.md
 # Configuration
 /app/config/app.php
 /app/config
-/app/config/local
-/app/config/production
 
 # Database
 /app/database/

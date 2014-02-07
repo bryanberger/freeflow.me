@@ -9,7 +9,7 @@
 		<h2>{{ $post->name }}</h2>
 		<ul>
 			@if (isset($prev))
-				<li><a href="{{ $prev->filename }}"><span class="sprite icnArrowLeft"></span>previous</a></li>
+				<li class="prev"><a href="{{ $prev->filename }}"><span class="sprite icnArrowLeft"></span>previous</a></li>
 			@endif
 			@if (isset($next))
 				<li class="next"><a href="{{ $next->filename }}">next<span class="sprite icnArrowRight"></span></a></li>
@@ -55,7 +55,7 @@
 		</table>
 	@else
 		<p class="sale-not-avail">
-		Sorry, all pieces are currently on hold for purchase while I source out the best print supplier. <br><br>
+		Prints coming soon. <br><br>
 		All prints will be printed on High quality Kodak Professional Endura Paper with a Lustre finish. A half inch white border
 		will be added.<br><br>
 		Available print sizes: 12x12in. and 24x24in.
@@ -66,7 +66,7 @@
 
 	@if ($post->hasWallpaper)
 		<p>
-			<a class="download" download title="Download Wallaper" href="{{ $cdn_path . 'wp/' .$post->filename . '_2560x1440.jpg' }}">
+			<a class="download" download data-name="{{ $post->filename }}" title="Download Wallaper" href="{{ $cdn_path . 'wp/' .$post->filename . '_2560x1440.jpg' }}">
 				<span class="sprite icnDownload"></span>Download Wallpaper</a> (2560x1440)
 		</p>
 	@endif

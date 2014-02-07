@@ -15,11 +15,12 @@ module.exports = function(grunt) {
 
 		uglify: {
 			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+				mangle: true
 			},
 			dist: {
 				files: {
-					'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+					'public/assets/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
 				}
 			}
 		},
@@ -78,11 +79,11 @@ module.exports = function(grunt) {
 
 		watch: {
 			files: ['<%= jshint.files %>', 'public/less/**/*.less'],
-			tasks: ['clean:all', 'less']
+			tasks: ['clean:all', 'less', 'concat', 'uglify']
 		}
 	});
 
-	// grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	// grunt.loadNpmTasks('grunt-contrib-jshint');
 	// grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-clean');
@@ -92,5 +93,5 @@ module.exports = function(grunt) {
 
 	//grunt.registerTask('test', ['jshint', 'qunit']);
 	//grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
-	grunt.registerTask('default', ['clean:all', 'less']);
+	grunt.registerTask('default', ['clean:all', 'less', 'concat', 'uglify']);
 };
