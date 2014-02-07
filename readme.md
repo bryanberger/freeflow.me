@@ -16,9 +16,9 @@
 	composer install --dev
 
 
-### Step 3: nodejs & npm install
+### Step 3: nodejs & npm install (get node/npm)
 	npm install
 	
 
-### Step 4: To build less run
+### Step 4: To build the css from less files run (get grunt)
 	grunt
