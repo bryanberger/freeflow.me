@@ -58,7 +58,7 @@
 		Sorry, all pieces are currently on hold for purchase while I source out the best print supplier. <br><br>
 		All prints will be printed on High quality Kodak Professional Endura Paper with a Lustre finish. A half inch white border
 		will be added.<br><br>
-		Available print sizes: 12x12in. &amp; 24x24in.
+		Available print sizes: 12x12in. and 24x24in.
 		</p>
 	@endif
 

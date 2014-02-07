@@ -18,3 +18,7 @@
 
 ### Step 3: nodejs & npm install
 	npm install
+	
+
+### Step 4: To build less run
+	grunt
