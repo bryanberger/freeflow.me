@@ -13,7 +13,7 @@
 
 $app = new Illuminate\Foundation\Application;
 
-$app->redirectIfTrailingSlash();
+// $app->redirectIfTrailingSlash();
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +27,8 @@ $app->redirectIfTrailingSlash();
 */
 
 $env = $app->detectEnvironment(array(
-	'local' => array('*.local', 'deca.local', 'localhost'),
-	'prod' => array('freeflow', 'freeflow.me', 'www.freeflow.me')
+	'local' => array('*.local', 'deca.local'),
+	'prod'	=> array('freeflow')
 ));
 
 /*
