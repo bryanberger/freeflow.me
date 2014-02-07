@@ -10,22 +10,22 @@ class ViewController extends \BaseController {
 	
 	public function showIndex()
 	{	
-		$posts = Post::orderBy('created_at', 'DESC')->get();
-		$count = count($posts);
-		$cdn_path = $this->_getCDNPath(NULL);
+		$posts 		= Post::orderBy('created_at', 'DESC')->get();
+		$count 		= count($posts);
+		$cdn_path 	= $this->_getCDNPath(NULL);
 
 		// meta
 		$meta = (object) array(
-			'title' => 'Freeflow.me - 1 Art Piece Daily. A Project from Bryan Berger',
-			'image_url' => $cdn_path . 'stormtrooper_560.jpg'
+			'title' 		=> 'Freeflow.me - 1 Art Piece Daily. A Project from Bryan Berger',
+			'image_url' 	=> $cdn_path . 'vader_560.jpg' // my fav
 		);
 
 		// arguments
 		$args = array(
-			'meta'  => $meta,
-			'posts' => $posts,
-			'count' => $count,
-			'cdn_path' => $cdn_path
+			'meta'  	=> $meta,
+			'posts' 	=> $posts,
+			'count' 	=> $count,
+			'cdn_path' 	=> $cdn_path
 		);
 
     	return View::make('index', $args);
@@ -33,10 +33,10 @@ class ViewController extends \BaseController {
 
 	public function showDetail($name)
 	{	
-		$max_days = '365';
+		$max_days 	= '365';
 		//$post = Post::where('filename', $name)->first();
 
-		$posts = Post::all();
+		$posts 		= Post::all();
 		$post_index = array_search($name, $posts->lists('filename'), true);
 
 		// if fails to exist
@@ -61,16 +61,16 @@ class ViewController extends \BaseController {
 		// meta data
 		$meta = (object) array(
 			'title'     => 'Freeflow.me - 1 Art Piece Daily - ' . $post->name . ' (' .$post->sequence_number . ' of ' . $max_days . ')',
-			'image_url' => $cdn_path . $post->filename . '_540.jpg'
+			'image_url' => $cdn_path . $post->filename . '_560.jpg'
 		);
 
 		$args = array(
-			'meta' => $meta,
-			'post' => $post,
-			'prev' => $prev,
-			'next' => $next,
-			'max_days' => $max_days,
-			'cdn_path' => $cdn_path
+			'meta' 		=> $meta,
+			'post' 		=> $post,
+			'prev' 		=> $prev,
+			'next' 		=> $next,
+			'max_days' 	=> $max_days,
+			'cdn_path' 	=> $cdn_path
 		);
 
 		return View::make('detail', $args);

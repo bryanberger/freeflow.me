@@ -14,7 +14,7 @@
 		<meta property="og:url" content="{{ Request::url() }}" />
 		<meta property="og:image" content="{{ $meta->image_url }}" />
 		<meta property="og:description" content="One Art Piece Daily for a full year. I call these freeflows as they are simply freeflow thoughts brought to life. - Bryan Berger" />
-		<meta property="og:site_name" content="Freeflow.me - 1 Art Piece Daily" />
+		<meta property="og:site_name" content="Freeflow.me - Daily artwork" />
 
 		<link rel="shortcut icon" href="http://freeflow.me/favicon.ico">
 		{{ HTML::style('assets/css/styles.min.css'); }}
@@ -30,7 +30,7 @@
 
 		<main role="main" class="container">
 			<header>
-				<a href="/"><h1>1 flow daily. A project by Bryan Berger</h1></a>
+				<a href="/"><h1>One Art Piece Daily for a full year. A project from Bryan Berger</h1></a>
 				<ul class="social">
 					<li><a href="http://twitter.com/bryanberger">{{HTML::image('assets/imgs/twitter.png')}}</a></li>
 					<li><a href="http://facebook.com/bryanbergerdesign">{{HTML::image('assets/imgs/facebook.png')}}</a></li>
@@ -47,7 +47,7 @@
 			<script type="text/javascript">
 				document.write(new Date().getFullYear());
 			</script>
-			<a href="http://bryanberger.com">Bryan Berger</a>. All Rights Reserved.
+			<a href="http://bryanberger.com">Bryan Berger</a>. All Rights Reserved. Project inspired by @justinmaller
 		</footer>
 
 		<!-- Google Analytics -->
