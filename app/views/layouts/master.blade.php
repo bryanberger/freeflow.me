@@ -3,17 +3,18 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Freeflow.me - 1 flow daily</title>
-		<meta name="description" content="1 piece of art daily by Designer &amp; Developer Bryan Berger">
+		<title>{{ $meta->title }}</title>
+
+		<meta name="description" content="One Art Piece Daily for a full year. I call these freeflows as they are simply freeflow thoughts brought to life. - Bryan Berger">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-		<meta property="og:title" content="Freeflow.me - 1 flow daily. A Project by Bryan Berger" />
+		<meta property="og:title" content="{{ $meta->title }}" />
 		<meta property="og:type" content="article" />
 		<meta property="og:locale" content="en_US" />
-		<meta property="og:url" content="http://freeflow.me" />
-		<meta property="og:image" content="https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/stormtrooper_560.jpg" />
-		<meta property="og:description" content="1 flow daily. I will be creating 1 piece a day for as long as possible! I call these freeflows as they are simply freeflow thoughts brought to life." />
-		<meta property="og:site_name" content="Freeflow.me - 1 flow daily" />
+		<meta property="og:url" content="{{ Request::url() }}" />
+		<meta property="og:image" content="{{ $meta->image_url }}" />
+		<meta property="og:description" content="One Art Piece Daily for a full year. I call these freeflows as they are simply freeflow thoughts brought to life. - Bryan Berger" />
+		<meta property="og:site_name" content="Freeflow.me - 1 Art Piece Daily" />
 
 		<link rel="shortcut icon" href="http://freeflow.me/favicon.ico">
 		{{ HTML::style('assets/css/styles.min.css'); }}

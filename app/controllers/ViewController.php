@@ -12,10 +12,20 @@ class ViewController extends \BaseController {
 	{	
 		$posts = Post::orderBy('created_at', 'DESC')->get();
 		$count = count($posts);
+		$cdn_path = $this->_getCDNPath(NULL);
+
+		// meta
+		$meta = (object) array(
+			'title' => 'Freeflow.me - 1 Art Piece Daily. A Project from Bryan Berger',
+			'image_url' => $cdn_path . 'stormtrooper_560.jpg'
+		);
+
+		// arguments
 		$args = array(
+			'meta'  => $meta,
 			'posts' => $posts,
 			'count' => $count,
-			'cdn_path' => $this->_getCDNPath(NULL)
+			'cdn_path' => $cdn_path
 		);
 
     	return View::make('index', $args);
@@ -39,19 +49,31 @@ class ViewController extends \BaseController {
 		
 		// remove tags from the object since we exploded them ourselves
 		$tags = explode(', ', $post->tags);
-		unset($post->tags);
+		$post->tags = $tags;
 
 		// prev and next objects for simple pageination
 		$prev = $posts->get($post_index-1);
 		$next = $posts->get($post_index+1);
 
-		return View::make('detail', array(
+		// get cdn path
+		$cdn_path = $this->_getCDNPath('840/'.$post->filename.'_840');
+
+		// meta data
+		$meta = (object) array(
+			'title'     => 'Freeflow.me - 1 Art Piece Daily - ' . $post->name . ' (' .$post->sequence_number . ' of ' . $max_days . ')',
+			'image_url' => $cdn_path . $post->filename . '_540.jpg'
+		);
+
+		$args = array(
+			'meta' => $meta,
 			'post' => $post,
 			'prev' => $prev,
 			'next' => $next,
-			'tags' => $tags,
 			'max_days' => $max_days,
-			'cdn_path' => $this->_getCDNPath('840/'.$name.'_840')));
+			'cdn_path' => $cdn_path
+		);
+
+		return View::make('detail', $args);
 	}
 
 	private function _getCDNPath($name) {
