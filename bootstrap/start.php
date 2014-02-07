@@ -27,9 +27,8 @@ $app->redirectIfTrailingSlash();
 */
 
 $env = $app->detectEnvironment(array(
-
-	'local' => array('your-machine-name'),
-
+	'local' => array('*.local', 'deca.local', 'localhost'),
+	'prod' => array('freeflow', 'freeflow.me', 'www.freeflow.me')
 ));
 
 /*
