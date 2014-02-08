@@ -3,28 +3,8 @@
 /vendor
 CONTRIBUTING.md
 
-# Configuration
-/app/config/app.php
-/app/config
-
-# Database
-/app/database/
-.env.local.php
-.env.production.php
-
-# Composer
-composer.phar
-composer.lock
-
 # OS
 .DS_Store
-.idea/
-
-# Packages
-_ide_helpers.php
 
 # Misc
 node_modules
-psds
-test.html
-.bak
