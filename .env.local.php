@@ -3,7 +3,6 @@
 return array(
 
     'DB_USER' => 'test',
-    'DB_PASS' => 'test',
-    'KEY'     => '***REMOVED***'
-
+    'DB_PASS' => 'test'
+    
 );
