@@ -4,6 +4,7 @@
 @for ($i = 0; $i < $count; $i++)
 	<?php $p = $posts->get($i); ?>
 
+@if($posts->getCurrentPage() === 1)
 	@if ($i === 0)
 		<li class="column grid-first"><a href="/{{ $p->filename }}"><img src="{{ $cdn_path . $p->filename}}_560.jpg"></a></li>
 	@elseif ($i === 1)
@@ -17,7 +18,11 @@
 	@else
 		<li class="column grid1"><a href="/{{ $p->filename }}"><img src="{{ $cdn_path . $p->filename}}_560.jpg"></a></li>
 	@endif
+@else
+	<li class="column grid1"><a href="/{{ $p->filename }}"><img src="{{ $cdn_path . $p->filename}}_560.jpg"></a></li>
+@endif
 
 @endfor
 </ul>
+<div class="centered">{{ $posts->links(); }}</div>
 @stop

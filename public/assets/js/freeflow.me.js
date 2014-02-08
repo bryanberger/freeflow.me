@@ -14,4 +14,4 @@ $(function() {
 		ga('send', 'event', 'button', 'click', 'prev');
 	});
 
-});
+})

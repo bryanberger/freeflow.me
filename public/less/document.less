@@ -14,6 +14,16 @@ h1 {
 	text-indent: -9999px;
 }
 
+a {
+	color: @linkColor;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+
 header {
 	margin: 42px 0;
 	.clearfix();
@@ -21,7 +31,7 @@ header {
 
 footer {
 	text-align: center;
-	margin: 4em 0;
+	margin: 2em 0;
 }
 
 footer span {
@@ -41,6 +51,11 @@ ul.social {
 	float: left;
 	width: 50px;
 	height: 50px;
+}
+
+.centered {
+  text-align: center;
+  .clearfix();
 }
 
 /* Browse Happy */

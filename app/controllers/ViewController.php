@@ -10,7 +10,7 @@ class ViewController extends \BaseController {
 	
 	public function showIndex()
 	{	
-		$posts 		= Post::orderBy('created_at', 'DESC')->get();
+		$posts 		= Post::orderBy('created_at', 'DESC')->paginate( 72 ); // with 365 should produce 5 links + 2 arrows
 		$count 		= count($posts);
 		$cdn_path 	= $this->_getCDNPath(NULL);
 
@@ -19,6 +19,9 @@ class ViewController extends \BaseController {
 			'title' 		=> 'Freeflow.me - 1 Art Piece Daily. A Project from Bryan Berger',
 			'image_url' 	=> $cdn_path . 'vader_560.jpg' // my fav
 		);
+
+		// push cur page to session
+		Session::put('curPage', $posts->getCurrentPage());
 
 		// arguments
 		$args = array(
@@ -58,10 +61,14 @@ class ViewController extends \BaseController {
 		// get cdn path
 		$cdn_path = $this->_getCDNPath('840/'.$post->filename.'_840');
 
+		// current page
+		$curPage  = Session::get('curPage');
+
 		// meta data
 		$meta = (object) array(
 			'title'     => 'Freeflow.me - 1 Art Piece Daily - ' . $post->name . ' (' .$post->sequence_number . ' of ' . $max_days . ')',
-			'image_url' => $cdn_path . $post->filename . '_560.jpg'
+			'image_url' => $cdn_path . $post->filename . '_560.jpg',
+			'pageNumUri'=> ($curPage === 1) ? NULL : '?page=' . $curPage
 		);
 
 		$args = array(

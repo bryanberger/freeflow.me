@@ -28,16 +28,24 @@
 	<hr>
 
 	@if ($post->hasBuyOptions)
-		<dl class="sale">
-			<dt>For Sale</dt>
-			<dd>
-				<ul>
-					<li>12in = $24.00</li>
-					<li>24in = $32.00</li>
-				</ul>
-			</dd>
-		</dl>
-		<p class="print-desc">Printed on 70# Satin Premium Photo Paper. Each size is limited to numbered edition of 100. Includes half-inch white border. Total printed area: 11x11 / 23x23 inches. All prints are ensconced in deluxe padding before being tucked into heavy duty packing tubes to ensure their safe delivery to you.</p>
+		<table class="buy-options" border="0" cellpadding="0" cellspacing="0">
+		  <tbody>
+		  	<tr>
+			  <td class="title" colspan="2"><b>Print Options:</b></td>
+			</tr>
+			<tr class="first">
+			  <td class="print-size">12x12 in</td>
+			  <td class="print-price">$8.00</td>
+			  <td><button class="btn" href="#">Buy now</button></td>
+			</tr>
+			<tr>
+			  <td class="print-size">24x24 in</td>
+			  <td class="print-price">$36.00</td>
+			  <td><button class="btn" href="#">Buy now</button></td>
+			</tr>
+		  </tbody>
+		</table>
+		<p class="print-desc">All prints are printed on Kodak Professional Endura Paper with a Lustre finish and half-inch white border. The total printed area is 11x11 / 23x23 inches. All prints are protected by foam and encased inside of a thick packing tube to ensure their safe delivery.</p>
 		<table class="shipping" border="0" cellpadding="0" cellspacing="0">
 		  <tbody>
 			<tr>
@@ -45,11 +53,11 @@
 			</tr>
 			<tr>
 			  <td class="shipping-location">USA</td>
-			  <td align="right">+ $10.00</td>
+			  <td class="shipping-price" align="right">+ $7.00</td>
 			</tr>
 			<tr>
 			  <td class="shipping-location">International</td>
-			  <td align="right">+ $35.00</td>
+			  <td class="shipping-price" align="right">+ $26.00</td>
 			</tr>
 		  </tbody>
 		</table>

@@ -31,6 +31,13 @@ Route::group(array('before' => 'auth.basic'), function(){
 // 	}
 // });
 
+// pagination routes
+Route::get('page/{page}', function($page)
+{
+
+})
+->where('page', '[0-9]+');
+
 // detail routes
 Route::get('{name}', array(
 	'as' 	 => 'post',

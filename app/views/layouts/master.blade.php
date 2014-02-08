@@ -31,7 +31,7 @@
 
 		<main role="main" class="container">
 			<header>
-				<a href="/"><h1>One Art Piece Daily for a full year. A project from Bryan Berger</h1></a>
+				<a href="/@if(isset($meta->pageNumUri)){{ $meta->pageNumUri }}@endif"><h1>One Art Piece Daily for a full year. A project from Bryan Berger</h1></a>
 				<ul class="social">
 					<li><a href="http://twitter.com/bryanberger">{{HTML::image('assets/imgs/twitter.png')}}</a></li>
 					<li><a href="http://facebook.com/bryanbergerdesign">{{HTML::image('assets/imgs/facebook.png')}}</a></li>
