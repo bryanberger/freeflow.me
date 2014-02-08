@@ -349,10 +349,14 @@ html {
 }
 h1 {
   float: left;
-  width: 287px;
-  height: 90px;
-  background: url('../imgs/logo.png') no-repeat;
-  text-indent: -9999px;
+  font-size: 1.1em;
+  font-weight: normal;
+  font-style: italic;
+}
+h1 .logo {
+  margin-bottom: 1em;
+  display: block;
+  text-decoration: none;
 }
 a {
   color: #3ca03d;
@@ -384,7 +388,7 @@ footer span {
 ul.social {
   float: right;
   padding: 0;
-  margin: 58px 0 0 0;
+  margin: 55px 0 0 0;
   list-style: none;
 }
 ul.social:before,
@@ -743,9 +747,21 @@ td.print-price {
 }
 /* Media Queries */
 /* ------------------------------------------------------------------------------------ */
+@media only screen and (width: 320px) {
+  header h1 .logo {
+    margin-bottom: 0.5em;
+  }
+  header h1,
+  ul.social {
+    font-size: 1em;
+  }
+}
 @media only screen and (min-width: 320px) and (max-width: 510px) {
   header {
-    margin-top: 0;
+    margin-top: 10px;
+  }
+  header h1 {
+    margin-bottom: 1.5em;
   }
   footer {
     margin: 2em 0 1em 0;
@@ -790,6 +806,9 @@ td.print-price {
     display: block;
     float: none;
   }
+  header h1 {
+    margin-bottom: 1.5em;
+  }
   .container {
     padding: 0 20px;
   }
@@ -830,15 +849,11 @@ td.print-price {
   }
   h1 {
     float: left;
-    width: 287px;
-    height: 90px;
-    background: url('../imgs/logo.png') no-repeat;
-    text-indent: -9999px;
   }
   ul.social {
     float: right;
     padding: 0;
-    margin: 58px 0 0 0;
+    margin: 55px 0 0 0;
     list-style: none;
   }
   ul.social:before,
