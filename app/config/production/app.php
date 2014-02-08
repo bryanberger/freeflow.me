@@ -1,5 +1,5 @@
 <?php
 return array(
 	'debug' => false,
-	'url' => 'http://freeflow.me'
-)
+	'url' => 'http://freeflow.me',
+);
