@@ -380,7 +380,7 @@ header:after {
 }
 footer {
   text-align: center;
-  margin: 2em 0;
+  margin: 2em 1em;
 }
 footer span {
   font-family: helvetica, arial, sans-serif;
@@ -764,7 +764,8 @@ td.print-price {
     margin-bottom: 1.5em;
   }
   footer {
-    margin: 2em 0 1em 0;
+    margin-top: 2em;
+    margin-bottom: 1em;
   }
   header h1,
   ul.social {
