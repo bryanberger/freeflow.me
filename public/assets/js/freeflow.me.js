@@ -3,7 +3,7 @@ $(function() {
 
 	$('.download').on('click', function() {
 		var postName = $(this).data('name');
-		ga('send', 'event', 'button', 'click', 'download wallpaper', postName);
+		ga('send', 'event', 'button', 'download', postName);
 	});
 
 	$('.next a').on('click', function() {
