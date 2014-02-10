@@ -3,6 +3,7 @@
   "description": "1 freeflow a day site",
   "version": "1.0.0",
   "homepage": "http://freeflow.me",
+  "repository": "https://github.com/decapyre/freeflow.me.git",
   "author": {
     "name": "Bryan Berger",
     "url": "http://bryanberger.com"
