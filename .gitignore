@@ -2,9 +2,9 @@
 /bootstrap/compiled.php
 /vendor
 CONTRIBUTING.md
+/app/storage
 
 # Database
-/app/database/
 .env.local.php
 .env.production.php
 
