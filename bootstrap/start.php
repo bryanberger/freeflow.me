@@ -27,8 +27,7 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(array(
-	'local' => array('*.local', 'deca.local'),
-	'production' => array('freeflow')
+	'local' => array('*.local')
 ));
 
 /*

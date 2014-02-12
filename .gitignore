@@ -5,8 +5,7 @@ CONTRIBUTING.md
 /app/storage
 
 # Database
-.env.local.php
-.env.production.php
+.env*
 
 # Composer
 composer.phar
