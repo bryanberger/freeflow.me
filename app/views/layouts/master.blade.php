@@ -17,6 +17,16 @@
 		<meta property="og:site_name" content="Freeflow.me - Daily artwork" />
 
 		<link rel="shortcut icon" href="http://freeflow.me/favicon.ico">
+
+		<script>
+			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+			function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+			e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+			e.src='//www.google-analytics.com/analytics.js';
+			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+			ga('create','UA-640481-18');ga('send','pageview');
+		</script>
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		{{ HTML::style('assets/css/styles.min.css'); }}
 		<!--[if lt IE 9]>
@@ -52,16 +62,6 @@
 			</script>
 			<a href="http://bryanberger.com">Bryan Berger</a>, <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/deed.en_US">Creative Commons BY-NC-ND 4.0</a>. Project inspired by @justinmaller
 		</footer>
-
-		<!-- Google Analytics -->
-		<script>
-			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-			function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-			e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-			e.src='//www.google-analytics.com/analytics.js';
-			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-			ga('create','UA-640481-18');ga('send','pageview');
-		</script>
 
 		<!-- custom js -->
 		{{ HTML::script('assets/js/freeflow.me.min.js'); }}
