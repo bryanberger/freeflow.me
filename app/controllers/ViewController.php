@@ -10,7 +10,7 @@ class ViewController extends \BaseController {
 	
 	public function showIndex()
 	{	
-		$posts 		= Post::orderBy('created_at', 'DESC')->paginate( 72 ); // with 365 should produce 5 links + 2 arrows
+		$posts 		= Post::orderBy('created_at', 'DESC')->paginate( 32 ); // with 365 should produce 5 links + 2 arrows
 		$count 		= count($posts);
 		$cdn_path 	= $this->_getCDNPath(NULL);
 
