@@ -93,7 +93,7 @@ class ViewController extends \BaseController {
 			$status_code = Cache::get('dropbox_status_code');
 		} else {
 			// we don't have a cached status_code so grab one and store it for a few hours
-			$request = Requests::get('https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'.$name.'.jpg');
+			$request = Requests::get('http://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'.$name.'.jpg');
 			$status_code = $request->status_code;
 			Cache::put('dropbox_status_code', $status_code, 60);
 		}
@@ -102,7 +102,7 @@ class ViewController extends \BaseController {
 		if($status_code === 509 || $status_code  === 404) {
 			$cdn_path = 'assets/imgs/art/';
 		} else {
-			$cdn_path = 'https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/';
+			$cdn_path = 'http://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/';
 		}
 
 		return $cdn_path;
