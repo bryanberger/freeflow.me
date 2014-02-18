@@ -9,10 +9,10 @@
 		<h2>{{ $post->name }}</h2>
 		<ul>
 			@if (isset($prev))
-				<li class="prev"><a href="{{ $prev->filename }}"><span class="sprite icnArrowLeft"></span>previous</a></li>
+				<li class="prev"><a href="{{ $prev->filename }}"><span class="sprite icnArrowLeft"></span>older</a></li>
 			@endif
 			@if (isset($next))
-				<li class="next"><a href="{{ $next->filename }}">next<span class="sprite icnArrowRight"></span></a></li>
+				<li class="next"><a href="{{ $next->filename }}">newer<span class="sprite icnArrowRight"></span></a></li>
 			@endif
 		</ul>
 	</div>
