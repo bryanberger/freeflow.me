@@ -19,6 +19,9 @@ Route::group(array('before' => 'auth.basic'), function(){
 	Route::resource('admin', 'AdminController');
 });
 
+// Site Map
+Route::get('sitemap', 'SitemapController@show');
+
 // detail route filter
 // Route::filter('postExists', function($route) {
 // 	// get route name param
