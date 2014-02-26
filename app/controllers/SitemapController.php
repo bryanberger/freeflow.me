@@ -24,7 +24,7 @@ class SitemapController extends \BaseController {
 
 		// add every post to the sitemap
 		foreach ($posts as $post) {
-			$sitemap->add('http://freeflow.me/'.$post->filename, $post->updated_at, 0.5, 'monthly');
+			$sitemap->add(URL::to('/').'/'.$post->filename, $post->updated_at, 0.5, 'monthly');
 		}
 
 		// show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
