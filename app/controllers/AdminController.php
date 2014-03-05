@@ -75,6 +75,9 @@ class AdminController extends \BaseController {
 			$post->hasBuyOptions = Input::get('hasBuyOptions', 0);
 			$post->save();
 
+			// clear cache
+			Cache::flush();
+			
 			// redirect
 			Session::flash('message', 'Successfully created ' . $post->name);
 			return Redirect::to('admin');
