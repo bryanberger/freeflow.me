@@ -22,6 +22,10 @@ Route::group(array('before' => 'auth.basic'), function(){
 // Site Map
 Route::get('sitemap', 'SitemapController@show');
 
+// Stripe
+Route::post('/buy/{id}', 'BuyController@placeOrder');
+Route::get('/buy/cart', 'BuyController@showCart');
+
 // detail route filter
 // Route::filter('postExists', function($route) {
 // 	// get route name param

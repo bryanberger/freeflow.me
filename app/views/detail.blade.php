@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('content')
 
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
 <div class="grid3 detail-col">
 	<img src="{{ $cdn_path }}840/{{ $post->filename }}_840.jpg" alt="{{ $post->name }}" width="840">
 </div>
@@ -30,18 +32,18 @@
 	@if ($post->hasBuyOptions)
 		<table class="buy-options" border="0" cellpadding="0" cellspacing="0">
 		  <tbody>
-		  	<tr>
+			<tr>
 			  <td class="title" colspan="2"><b>Print Options:</b></td>
 			</tr>
 			<tr class="first">
-			  <td class="print-size">12x12 in</td>
-			  <td class="print-price">$8.00</td>
-			  <td><button class="btn" href="#">Buy now</button></td>
+			  <td class="print-size">{{ Config::get('prices.small.name') }}</td>
+			  <td class="print-price">{{ Config::get('prices.small.pretty_price') }}</td>
+			  <td><button class="btn" data-type="small" data-name="{{ Config::get('prices.small.name') }}" data-pretty-price="{{ Config::get('prices.small.pretty_price') }}" data-price="{{ Config::get('prices.small.price') }}" href="#">Add to Cart</button></td>
 			</tr>
 			<tr>
-			  <td class="print-size">24x24 in</td>
-			  <td class="print-price">$36.00</td>
-			  <td><button class="btn" href="#">Buy now</button></td>
+			 <td class="print-size">{{ Config::get('prices.large.name') }}</td>
+			  <td class="print-price">{{ Config::get('prices.large.pretty_price') }}</td>
+			  <td><button class="btn" data-type="large" data-name="{{ Config::get('prices.large.name') }}" data-pretty-price="{{ Config::get('prices.large.pretty_price') }}" data-price="{{ Config::get('prices.large.price') }}" href="#">Add to Cart</button></td>
 			</tr>
 		  </tbody>
 		</table>
@@ -78,5 +80,58 @@
 				<span class="sprite icnDownload"></span>Download Wallpaper</a> (2560x1440)
 		</p>
 	@endif
+
+<!--
+	<script>
+		$(function(){
+		  var printType;
+		  var handler = StripeCheckout.configure({
+			key: '@stripeKey',
+			shippingAddress: true,
+			billingAddress: false,
+			allowRememberMe: true,
+			token: function(token, args) {
+
+			  console.log(token, args);
+
+			  $.ajax({
+				  url: 'buy/{{ $post->id }}',
+				  type: 'post',
+				  data: {token: token.id, email: token.email, printType: printType},
+				 //  success: function(data) {
+					// if (data == 'success') {
+					// 	console.log("Card successfully charged!");
+					// }
+					// else {
+					// 	console.log("Success Error!");
+					// }
+
+				 //  },
+				 //  error: function(data) {
+					// console.log("Ajax Error!");
+				 //  }
+				}); // end ajax call
+
+			  
+			}
+		  });
+
+
+			$('.btn').click(function() {
+
+				printType = $(this).data('type');
+
+				handler.open({
+					name: '{{ $post->name }}',
+					description: $(this).data('name') + ' Print - ' + $(this).data('pretty-price'),
+					amount: $(this).data('price')
+				});
+
+				return false;
+		  	});
+		});
+	</script>
+-->
+
 </div>
 @stop
