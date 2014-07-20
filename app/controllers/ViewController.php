@@ -58,6 +58,13 @@ class ViewController extends \BaseController {
 		$prev = $posts->get($post_index-1);
 		$next = $posts->get($post_index+1);
 
+		$prev5 = [
+			$prev,
+			$posts->get($post_index-2),
+			$posts->get($post_index-3),
+			$posts->get($post_index-4)
+		];
+
 		// get cdn path
 		$cdn_path = $this->_getCDNPath('840/'.$post->filename.'_840');
 
@@ -77,7 +84,8 @@ class ViewController extends \BaseController {
 			'prev' 		=> $prev,
 			'next' 		=> $next,
 			'max_days' 	=> $max_days,
-			'cdn_path' 	=> $cdn_path
+			'cdn_path' 	=> $cdn_path,
+			'prev5'		=> $prev5
 		);
 
 		return View::make('detail', $args);

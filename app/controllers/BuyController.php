@@ -15,6 +15,8 @@ class BuyController extends \BaseController {
 		// meta
 		$meta = (object) array(
 			'title' 		=> 'Shopping Cart - Freeflow.me - 1 Art Piece Daily. A Project from Bryan Berger',
+			'image_url' 	=> 'assets/imgs/vader_560.jpg' // my fav
+
 		);
 
 		// arguments
@@ -46,6 +48,7 @@ class BuyController extends \BaseController {
 		$rules = array(
 			'token'		=> 'required',
 			'email'		=> 'required|email',
+			'desc'		=> 'required',
 			'printType'	=>	array('required', 'regex:/^(small|large)$/')
 		);
 		$validator = Validator::make(Input::all(), $rules);
@@ -62,6 +65,7 @@ class BuyController extends \BaseController {
 			$token		= Input::get('token');
 			$email		= Input::get('email');
 			$printType	= Input::get('printType');
+			$desc		= Input::get('desc');
 
 			$customer = Stripe_Customer::create(array(
 				'email' => $email,
@@ -72,6 +76,7 @@ class BuyController extends \BaseController {
 				'customer' => $customer->id,
 				'amount'   => (($printType == 'small') ? Config::get('prices.small.price') : Config::get('prices.large.price'))
 								+ Config::get('prices.shipping.usa'),
+				'description' => $name . " | " . $desc,
 				'currency' => 'usd'
 			));
 		}

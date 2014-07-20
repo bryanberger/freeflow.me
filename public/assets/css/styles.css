@@ -1,4 +1,4 @@
-@import url('http://fonts.googleapis.com/css?family=Gudea:400,700,400italic');
+@import url("http://fonts.googleapis.com/css?family=Gudea:400,700,400italic");
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -407,6 +407,32 @@ ul.social:after {
   width: 50px;
   height: 50px;
 }
+.social li.cart {
+  border-left: 1px solid #ccc;
+  margin-left: 1.3em;
+  padding-left: 0.8em;
+}
+.cart .cart-quantity {
+  position: relative;
+  top: -65px;
+  left: 50px;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ff6633;
+  font-size: 0.75em;
+  line-height: 22px;
+  text-align: center;
+  color: white;
+}
+.cart-link:hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  filter: alpha(opacity=60);
+  -webkit-opacity: 0.6;
+  -moz-opacity: 0.6;
+  opacity: 0.6;
+}
 .centered {
   text-align: center;
 }
@@ -419,6 +445,9 @@ ul.social:after {
 }
 .centered:after {
   clear: both;
+}
+.strike {
+  text-decoration: line-through;
 }
 /* Browse Happy */
 /* ------------------------------------------------------------------------------------ */
@@ -515,6 +544,12 @@ ul#tmbs {
   vertical-align: middle;
   background: url('../imgs/icnArrowRight.png');
 }
+.icnCart {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  background: url('../imgs/cart.png');
+}
 hr {
   margin: 0;
   padding: 0;
@@ -524,18 +559,18 @@ hr {
   color: #ccc;
   background-color: #ccc;
 }
-.details {
-  padding-left: 40px;
-}
-.details:before,
-.details:after {
+.details-container:before,
+.details-container:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */
 }
-.details:after {
+.details-container:after {
   clear: both;
+}
+.details {
+  padding-left: 40px;
 }
 .details .title:before,
 .details .title:after {
@@ -649,6 +684,88 @@ td.print-price {
 .buy-options .title {
   padding: 0;
 }
+/* special button */
+.button {
+  position: relative;
+  display: block;
+  width: 95px;
+  height: 30px;
+  text-align: center;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+.button .addtocart {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: translateZ(-100px);
+  transform: translateZ(-100px);
+  -webkit-transition: -webkit-transform 300ms;
+  transition: transform 300ms;
+  cursor: pointer;
+}
+.button .addtocart > div {
+  position: absolute;
+  display: block;
+  width: 95px;
+  height: 30px;
+  line-height: 32px;
+}
+.button .addtocart > .add {
+  background: #3ca03d;
+  color: #fff;
+  -webkit-transform: rotateY(0deg) translateZ(15px);
+  transform: rotateY(0deg) translateZ(15px);
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+}
+.button .addtocart > .add:hover {
+  background: #51be52;
+  color: #fff;
+}
+.button .addtocart > .added {
+  background: #ff6633;
+  color: #fff;
+  -webkit-transform: rotateX(90deg) translateZ(15px);
+  transform: rotateX(90deg) translateZ(15px);
+}
+.button .addtocart.active {
+  -webkit-animation-name: rotate;
+  animation-name: rotate;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+@-webkit-keyframes rotate {
+  35% {
+    -webkit-transform: translateZ(-100px) rotateX(-90deg);
+    transform: translateZ(-100px) rotateX(-90deg);
+  }
+  72% {
+    -webkit-transform: translateZ(-100px) rotateX(-90deg);
+    transform: translateZ(-100px) rotateX(-90deg);
+  }
+  100% {
+    -webkit-transform: translateZ(-100px);
+    transform: translateZ(-100px);
+  }
+}
+@keyframes rotate {
+  35% {
+    -webkit-transform: translateZ(-100px) rotateX(-90deg);
+    transform: translateZ(-100px) rotateX(-90deg);
+  }
+  72% {
+    -webkit-transform: translateZ(-100px) rotateX(-90deg);
+    transform: translateZ(-100px) rotateX(-90deg);
+  }
+  100% {
+    -webkit-transform: translateZ(-100px);
+    transform: translateZ(-100px);
+  }
+}
 /* button classes */
 .btn {
   margin: 0;
@@ -687,6 +804,15 @@ td.print-price {
 .btn:hover,
 .btn:focus {
   color: #fff;
+}
+.extras {
+  margin-top: 2.5em;
+}
+.extras h3 {
+  margin-top: 0;
+}
+.extras .grid1 {
+  width: 50%;
 }
 .pagination {
   height: 36px;
@@ -778,6 +904,9 @@ td.print-price {
   ul.social li {
     margin: 0 0.8em 0 0;
   }
+  .social li.cart-icon {
+    margin-left: 0.8em;
+  }
   .container {
     padding: 0 20px;
   }
@@ -851,6 +980,9 @@ td.print-price {
     /*width: 50%;*/
     width: 33.3%;
   }
+  .extras .grid1 {
+    width: 25%;
+  }
   h1 {
     float: left;
   }
@@ -912,6 +1044,9 @@ td.print-price {
   .grid3.detail-col {
     width: 50%;
   }
+  .extras .grid1 {
+    width: 25%;
+  }
 }
 /*@media only screen and (min-width: 1140px) {*/
 @media only screen and (min-width: 1120px) {
@@ -948,6 +1083,9 @@ td.print-price {
   .grid3 {
     width: 60%;
   }
+  .extras .grid1 {
+    width: 25%;
+  }
   .alt2 {
     margin: 0;
   }
@@ -964,4 +1102,207 @@ td.print-price {
   .grid3.detail-col {
     width: 60%;
   }
+}
+/*
+I wanted to go with a mobile first approach, but it actually lead to more verbose CSS in this case, so I've gone web first. Can't always force things...
+
+Side note: I know that this style of nesting in SASS doesn't result in the most performance efficient CSS code... but on the OCD/organizational side, I like it. So for CodePen purposes, CSS selector performance be damned.
+*/
+/* Global settings */
+/* Global "table" column settings */
+.product-image {
+  float: left;
+  width: 20%;
+}
+.product-details {
+  float: left;
+  width: 37%;
+}
+.product-price {
+  float: left;
+  width: 12%;
+}
+.product-quantity {
+  float: left;
+  width: 10%;
+}
+.product-removal {
+  float: left;
+  width: 9%;
+}
+.product-line-price {
+  float: left;
+  width: 12%;
+  text-align: right;
+}
+/* Apply clearfix in a few places */
+.shopping-cart:before,
+.column-labels:before,
+.product:before,
+.totals-item:before,
+.shopping-cart:after,
+.column-labels:after,
+.product:after,
+.totals-item:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.shopping-cart:after,
+.column-labels:after,
+.product:after,
+.totals-item:after {
+  clear: both;
+}
+/* Apply dollar signs */
+.product .product-price:before,
+.product .product-line-price:before,
+.totals-value:before {
+  content: '$';
+}
+h2.cart-header {
+  padding: 0.5em;
+  background: #ededed;
+}
+h2.cart-header a {
+  float: right;
+  padding-left: 0.5em;
+  font-weight: normal;
+  font-size: 0.8em;
+}
+label {
+  color: #aaaaaa;
+}
+#cart-total {
+  font-weight: bold;
+  font-size: 1.4em;
+}
+/* Column headers */
+.column-labels label {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #d2d2d2;
+}
+.column-labels .product-image,
+.column-labels .product-details,
+.column-labels .product-removal {
+  text-indent: -9999px;
+}
+/* Product entries */
+.product {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d2d2d2;
+}
+.product .product-image {
+  text-align: center;
+}
+.product .product-image img {
+  width: 100px;
+}
+.product .product-details .product-title {
+  font-weight: bold;
+  margin-right: 20px;
+}
+.product .product-details .product-description {
+  margin: 5px 20px 5px 0;
+  line-height: 1.4em;
+}
+.product .product-quantity input {
+  width: 40px;
+}
+.product .remove-product {
+  border: 0;
+  padding: 4px 8px;
+  background-color: #c66;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 3px;
+}
+.product .remove-product:hover {
+  background-color: #a44;
+}
+/* Totals section */
+.totals .totals-item {
+  float: right;
+  clear: both;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.totals .totals-item label {
+  float: left;
+  clear: both;
+  width: 79%;
+  text-align: right;
+}
+.totals .totals-item .totals-value {
+  float: right;
+  width: 21%;
+  text-align: right;
+}
+.checkout {
+  float: right;
+  border: 0;
+  margin-top: 20px;
+  padding: 6px 25px;
+  background-color: #6b6;
+  color: #fff;
+  font-size: 25px;
+  border-radius: 3px;
+}
+.checkout:hover {
+  background-color: #494;
+}
+/* Make adjustments for tablet */
+@media screen and (max-width: 650px) {
+  .shopping-cart {
+    margin: 0;
+    padding-top: 20px;
+    border-top: 1px solid #d2d2d2;
+  }
+  .column-labels {
+    display: none;
+  }
+  .product-image {
+    float: right;
+    width: auto;
+  }
+  .product-image img {
+    margin: 0 0 10px 10px;
+  }
+  .product-details {
+    float: none;
+    margin-bottom: 10px;
+    width: auto;
+  }
+  .product-price {
+    clear: both;
+    width: 70px;
+  }
+  .product-quantity {
+    width: 100px;
+  }
+  .product-quantity input {
+    margin-left: 20px;
+  }
+  .product-quantity:before {
+    content: 'x';
+  }
+  .product-removal {
+    width: auto;
+  }
+  .product-line-price {
+    float: right;
+    width: 70px;
+  }
+}
+.shipping {
+  margin-bottom: 2em;
+  text-align: left;
+  float: right;
+}
+.shipping span {
+  text-align: left;
+  padding-right: 0.5em;
 }

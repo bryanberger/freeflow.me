@@ -1,6 +1,5 @@
 /* Document */
 /* ------------------------------------------------------------------------------------ */
-
 body, html {
 	font-family: 'Gudea', helvetica, arial, sans-serif;
 	color: #555;
@@ -64,9 +63,38 @@ ul.social {
 	height: 50px;
 }
 
+.social li.cart {
+	border-left: 1px solid #ccc;
+	margin-left: 1.3em;
+	padding-left: 0.8em;
+}
+
+.cart .cart-quantity {
+  position: relative;
+  top: -65px;
+  left: 50px;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ff6633;
+  font-size: 0.75em;
+  line-height: 22px;
+  text-align: center;
+  color: white;
+}
+
+.cart-link:hover {
+	.opacity(0.6);
+}
+
 .centered {
   text-align: center;
   .clearfix();
+}
+
+.strike {
+	text-decoration: line-through;
 }
 
 /* Browse Happy */

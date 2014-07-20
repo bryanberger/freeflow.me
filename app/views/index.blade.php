@@ -24,5 +24,5 @@
 
 @endfor
 </ul>
-<div class="centered">{{ $posts->links(); }}</div>
+<section class="centered">{{ $posts->links(); }}</section>
 @stop

@@ -14,4 +14,8 @@ $(function() {
 		ga('send', 'event', 'button', 'click', 'prev');
 	});
 
+	$('.extras a').on('click', function() {
+		ga('send', 'event', 'button', 'click', 'extras');
+	});
+
 })

@@ -185,4 +185,3 @@
     e.preventDefault();
   });
 </script>
-@stop

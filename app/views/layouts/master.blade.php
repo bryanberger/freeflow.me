@@ -48,6 +48,13 @@
 					<li><a href="http://twitter.com/bryanberger">{{HTML::image('assets/imgs/twitter.png')}}</a></li>
 					<li><a href="http://facebook.com/bryanbergerdesign">{{HTML::image('assets/imgs/facebook.png')}}</a></li>
 					<li><a href="http://behance.net/bryanberger">{{HTML::image('assets/imgs/behance.png')}}</a></li>
+
+					<li class="cart">
+						<a class="cart-link" href="/buy/cart">
+							<span class="cart-text sprite icnCart"></span>
+							<span class="cart-quantity">1</span>
+						</a>
+					</li>
 				</ul>
 			</header>
 
