@@ -28,7 +28,8 @@ class ViewController extends \BaseController {
 			'meta'  	=> $meta,
 			'posts' 	=> $posts,
 			'count' 	=> $count,
-			'cdn_path' 	=> $cdn_path
+			'cdn_path' 	=> $cdn_path,
+			'cart_count'=> Cart::count()
 		);
 
     	return View::make('index', $args);
@@ -58,7 +59,7 @@ class ViewController extends \BaseController {
 		$prev = $posts->get($post_index-1);
 		$next = $posts->get($post_index+1);
 
-		$prev5 = [
+		$prev4 = [
 			$prev,
 			$posts->get($post_index-2),
 			$posts->get($post_index-3),
@@ -85,13 +86,16 @@ class ViewController extends \BaseController {
 			'next' 		=> $next,
 			'max_days' 	=> $max_days,
 			'cdn_path' 	=> $cdn_path,
-			'prev5'		=> $prev5
+			'prev4'		=> $prev4,
+			'cart_count'=> Cart::count()
 		);
 
 		return View::make('detail', $args);
 	}
 
 	private function _getCDNPath($name) {
+		return 'assets/imgs/art/';
+		
 		if($name === NULL) {
 			$name = 'humhum_560'; // humhum is the smallest image filesize wise.
 		}

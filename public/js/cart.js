@@ -1,20 +1,102 @@
 // cart.js
 
 $(function(){
+	//var taxRate = 0.05;
+	var shippingRate = 26.00; 
+	var fadeTime = 125;
+	var total;
+
+
+	function updateQuantityIcon(val) {
+		//var curQuantity = parseInt($('.cart-quantity').text());
+		if(val == 0) {
+			$('.cart-quantity').hide();
+			return;
+		}
+
+		//$('.cart-quantity').show();
+		$('.cart-quantity').fadeOut(250, function(){
+			$(this).fadeIn(250);
+			$('.cart-quantity').text(val);
+			//$('.cart-quantity').text(curQuantity+1);
+		});
+	}
+
 	// Trigger animation on Add to Cart button click
-	$('.addtocart').on('click', function () {
+	function addtocartclick() {
 		$(this).addClass('active');
+		$('.addtocart').off( "click");
+
+		$.ajax({
+			url: 'buy/' + $(this).data('id'),
+			type: 'post',
+			data: {size: $(this).data('size')},
+			success: function(data) {
+				json = JSON.parse(data);
+
+				if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
+					console.log("Item Added!");
+					updateQuantityIcon(json.success);
+				} else {
+					console.log("Item Failed");
+				}
+			},
+			error: function(data) {
+				console.log("Ajax Error!");
+			}
+		}); // end ajax call
+
+
 		setTimeout(function () {
 			$('.addtocart').removeClass('active');
+			$('.addtocart').on('click',addtocartclick);
 		}, 1000);
+	}
+	$('.addtocart').on('click', addtocartclick);
+
+	$('.checkout').on('click', function(){
+		var printType;
+		var desc;
+		var handler = StripeCheckout.configure({
+			key: stripeToken,
+			shippingAddress: true,
+			billingAddress: false,
+			allowRememberMe: true,
+			zipCode: true,
+			//image: "{{ $cdn_path }}/{{ $post->filename }}_560.jpg",
+			token: function(token, args) {
+				$.ajax({
+					url: '/buy/checkout',
+					type: 'post',
+					data: {token: token.id, email: token.email, card:token.card},
+					success: function(data) {
+						json = JSON.parse(data);
+
+						if (typeof json.success !== 'undefined') {
+							console.log("Card successfully charged!");
+							$('.shopping-cart').html('<h3>Success! Check your email for your order confirmation.</h3>');
+							removeAllItems();
+						} else {
+							console.log("Success Error...");
+						}
+
+					},
+					error: function(data) {
+						console.log("Ajax Error...");
+					}
+				});			  
+			}
+		});
+
+		// call buy service
+		handler.open({
+			name: 'Freeflow piece(s)',
+			description: desc,
+			amount: total * 100
+		});
+
+		return false;
 	});
-
-
-	/* Set rates + misc */
-	//var taxRate = 0.05;
-	var shippingRate = 15.00; 
-	var fadeTime = 125;
-
 
 	/* Assign actions */
 	$('.product-quantity input').change( function() {
@@ -50,6 +132,8 @@ $(function(){
 	  	shippingRate = 7.00;
 	  } else if(country === "CA") {
 	  	shippingRate = 15.00;
+	  } else if(country === "--") {
+	  	shippingRate = 0.00;
 	  } else {
 	  	shippingRate = 26.00;
 	  }
@@ -58,7 +142,7 @@ $(function(){
 	 // var tax = subtotal * taxRate;
 	  var shipping = (subtotal > 0 ? shippingRate : 0);
 	  //var total = subtotal + tax + shipping;
-	  var total = subtotal + shipping;
+	  total = subtotal + shipping;
 	  
 	  /* Update totals display */
 	  $('.totals-value').fadeOut(fadeTime, function() {
@@ -93,6 +177,27 @@ $(function(){
 	      $(this).fadeIn(fadeTime);
 	    });
 	  });  
+
+		// update service
+		$.ajax({
+			url: '/buy/update/' + productRow.data('id'),
+			type: 'post',
+			data: {qty: quantity},
+			success: function(data) {
+				json = JSON.parse(data);
+
+				if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
+					console.log("Item Quantity updated!");
+					updateQuantityIcon(json.success);
+				} else {
+					console.log("Item Quantity Error...");
+				}
+
+			},
+			error: function(data) {
+				console.log("Ajax Error!");
+			}
+		});
 	}
 
 
@@ -105,6 +210,56 @@ $(function(){
 	    productRow.remove();
 	    recalculateCart();
 	  });
+
+		// remove single item
+		$.ajax({
+			url: '/buy/remove/' + productRow.data('id'),
+			type: 'post',
+			success: function(data) {
+				json = JSON.parse(data);
+
+				if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
+					console.log("Item Removed!");
+					updateQuantityIcon(json.success);
+				} else {
+					console.log("Item Removed Error...");
+				}
+
+			},
+			error: function(data) {
+				console.log("Ajax Error!");
+			}
+		});
 	}
+
+
+	function removeAllItems()
+	{
+		// $('.product').each(function () {
+		// 	$(this).remove();
+		// });
+
+		// // destroy cart
+		// $.ajax({
+		// 	url: '/buy/destroy/',
+		// 	type: 'post',
+		// 	success: function(data) {
+		// 		json = JSON.parse(data);
+
+		// 		if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
+		// 			console.log("Items Removed!");
+		// 			updateQuantityIcon(json.success);
+		// 		} else {
+		// 			console.log("Items Removed Error...");
+		// 		}
+
+		// 	},
+		// 	error: function(data) {
+		// 		console.log("Ajax Error!");
+		// 	}
+		// });
+	}
+
+	recalculateCart();
 
 });

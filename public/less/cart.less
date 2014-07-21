@@ -97,11 +97,11 @@ label {
   
   .remove-product {
     border: 0;
-    padding: 4px 8px;
+    padding: 6px 10px;
     background-color: #c66;
     color: #fff;
-    font-size: 12px;
-    border-radius: 3px;
+    font-size: 0.75em;
+    border-radius: 4px;
   }
   
   .remove-product:hover {
@@ -143,8 +143,8 @@ label {
   padding: 6px 25px;
   background-color: #6b6;
   color: #fff;
-  font-size: 25px;
-  border-radius: 3px;
+  font-size: 1.5em;
+  border-radius: 4px;
 }
 
 .checkout:hover {
@@ -216,60 +216,39 @@ label {
 	padding-right: 0.5em;
 }
 
+.empty-cart {
+  text-align: center;
+  font-size: 1.2em;
+}
 
-// /* Make more adjustments for phone */
-// @media screen and (max-width: 350px) {
+
+/* Make more adjustments for phone */
+@media screen and (max-width: 350px) {
   
-//   .product-removal {
-//     float: right;
-//   }
+  .product-removal {
+    float: right;
+  }
   
-//   .product-line-price {
-//     float: right;
-//     clear: left;
-//     width: auto;
-//     margin-top: 10px;
-//   }
+  .product-line-price {
+    float: right;
+    clear: left;
+    width: auto;
+    margin-top: 10px;
+  }
   
-//   .product .product-line-price:before {
-//     content: 'Item Total: $';
-//   }
+  .product .product-line-price:before {
+    content: 'Item Total: $';
+  }
   
-//   .totals {
-//     .totals-item {
-//       label {
-//         width: 60%;
-//       }
+  .totals {
+    .totals-item {
+      label {
+        width: 60%;
+      }
       
-//       .totals-value {
-//         width: 40%;
-//       }
-//     }
-//   }
-// }
-
-// header .cart-quantity.empty {
-//   display: none;
-// }
-// header .returnToShop {
-//   display: none;
-// }
-// header a.cart-link.active {
-//   border: 0;
-//   /* Cart link gets hidden */
-//   /* Back button is displayed */
-// }
-// header a.cart-link.active span.cart-text {
-//   display: none;
-// }
-// header a.cart-link.active span.cart-quantity {
-//   display: none;
-// }
-// header a.cart-link.active span.returnToShop {
-//   position: absolute;
-//   right: -75px;
-//   display: block;
-//   padding: 0 10px;
-//   background: #1e1e1e;
-//   border-right: 1px dotted #444444;
-// }
+      .totals-value {
+        width: 40%;
+      }
+    }
+  }
+}

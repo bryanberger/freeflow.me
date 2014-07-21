@@ -52,11 +52,20 @@
 					<li class="cart">
 						<a class="cart-link" href="/buy/cart">
 							<span class="cart-text sprite icnCart"></span>
-							<span class="cart-quantity">1</span>
+							@if ($cart_count == 0)
+							<span class="cart-quantity" style="display:none;">{{ $cart_count }}</span>
+							@else 
+							<span class="cart-quantity">{{ $cart_count }}</span>
+							@endif
 						</a>
 					</li>
 				</ul>
 			</header>
+
+			<!-- will be used to show any messages -->
+			@if (Session::has('message'))
+				<div class="alert alert-error">{{ Session::get('message') }}</div>
+			@endif
 
 			@yield('content')
 

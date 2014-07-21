@@ -1,40 +1,39 @@
 @extends('layouts.master')
 @section('content')
-
 <script src="https://checkout.stripe.com/checkout.js"></script>
+<script type="text/javascript">
+	var stripeToken = "@stripeKey";
+</script>
+
 <h2 class="cart-header">Shopping Cart <a href="/">continue shopping</a></h2>
 
-<div class="shopping-cart">
-
-  <div class="column-labels">
-    <label class="product-image">Image</label>
-    <label class="product-details">Product</label>
-    <label class="product-price">Price</label>
-    <label class="product-quantity">Quantity</label>
-    <label class="product-removal">Remove</label>
-    <label class="product-line-price">Total</label>
-  </div>
-
-  <div class="product">
-    <div class="product-image">
-      <a href="/vader">{{HTML::image('assets/imgs/art/vader_560.jpg')}}</a>
-    </div>
-    <div class="product-details">
-      <div class="product-title">Vader</div>
-      <p class="product-description">12x12in Limited Edition Lustre Finish Print</p>
-    </div>
-    <div class="product-price">12.99</div>
-    <div class="product-quantity">
-      <input type="number" value="2" min="1">
-    </div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
-    </div>
-    <div class="product-line-price">25.98</div>
-  </div>
-
+<section class="shopping-cart">
+	@if (count($cart) > 0)
+	<div class="column-labels">
+		<label class="product-image">Image</label>
+		<label class="product-details">Product</label>
+		<label class="product-price">Price</label>
+		<label class="product-quantity">Quantity</label>
+		<label class="product-removal">Remove</label>
+		<label class="product-line-price">Total</label>
+	</div>
+	@foreach ($cart as $item)
+	<div class="product" data-id="{{ $item->id }}">
+		<div class="product-image"><a href="/{{$item->post->filename}}">{{HTML::image('assets/imgs/art/' . $item->post->filename . '_560.jpg')}}</a></div>
+		<div class="product-details">
+			<div class="product-title"><a href="/{{$item->post->filename}}">{{ $item->name }}</a></div>
+			<p class="product-description">{{ $item->options->desc }}</p>
+		</div>
+		<div class="product-price">{{ $item->price }}</div>
+		<div class="product-quantity">
+			<input type="number" value="{{ $item->qty }}" min="1">
+		</div>
+		<div class="product-removal">
+			<button class="remove-product">Remove</button>
+		</div>
+		<div class="product-line-price">{{ $item->subtotal }}</div>
+	</div>
+	@endforeach
 	<div class="shipping">
 		<span>Delivery Country:</span>
 		<select class="country" name="country">
@@ -43,62 +42,28 @@
 		</select>
 	</div>
 
-  
+	<div class="totals">
+		<div class="totals-item">
+			<label>Subtotal</label>
+			<div class="totals-value" id="cart-subtotal">{{ $total }}</div>
+		</div>
+		<!-- <div class="totals-item">
+		<label>Tax (5%)</label>
+		<div class="totals-value" id="cart-tax">3.60</div>
+		</div> -->
+		<div class="totals-item">
+			<label>Shipping</label>
+			<div class="totals-value" id="cart-shipping"></div>
+		</div>
+		<div class="totals-item totals-item-total">
+			<label>Grand Total</label>
+			<div class="totals-value" id="cart-total">{{ $total }}</div>
+		</div>
+	</div>
 
-  <div class="totals">
-    <div class="totals-item">
-      <label>Subtotal</label>
-      <div class="totals-value" id="cart-subtotal">71.97</div>
-    </div>
-    <!-- <div class="totals-item">
-      <label>Tax (5%)</label>
-      <div class="totals-value" id="cart-tax">3.60</div>
-    </div> -->
-    <div class="totals-item">
-      <label>Shipping</label>
-      <div class="totals-value" id="cart-shipping">15.00</div>
-    </div>
-    <div class="totals-item totals-item-total">
-      <label>Grand Total</label>
-      <div class="totals-value" id="cart-total">90.57</div>
-    </div>
-  </div>
-      
-      <button class="checkout">Checkout</button>
-
-</div>
-
-
-<!-- <h2>Shopping Card Example</h2>
-<div ng:controller="CartForm">
-    <table class="table">
-        <tr>
-            
-            <th>Description</th>
-            <th>Qty</th>
-            <th>Cost</th>
-            <th>Total</th>
-            <th></th>
-        </tr>
-        <tr ng:repeat="item in invoice.items">
-            <td><input type="text" ng:model="item.description"class="input-small"></td>           
-            <td><input type="number" ng:model="item.qty" ng:required class="input-mini"></td>
-            <td><input type="number" ng:model="item.cost" ng:required class="input-mini"></td>
-            <td>item.qty * item.cost | currency</td>
-            <td>
-                [<a href ng:click="removeItem($index)">X</a>]
-            </td>
-        </tr>
-        <tr>
-            <td><a href ng:click="addItem()" class="btn btn-small">add item</a></td>
-            <td></td>
-            <td>Total:</td>
-            <td>total() | currency</td>
-        </tr>
-    </table>
-</div> -->
-
-
-
-</div>
+	<button class="checkout">Checkout</button>
+	@else
+	<p class="empty-cart">Your Cart is <i>empty</i>. Head back to the <a href="{{ URL::to('/') }}">home page</a> to check out more daily digital artwork.</p>
+	@endif
+</section>
 @stop

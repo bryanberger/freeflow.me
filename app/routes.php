@@ -23,7 +23,11 @@ Route::group(array('before' => 'auth.basic'), function(){
 Route::get('sitemap', 'SitemapController@show');
 
 // Stripe
-Route::post('/buy/{id}', 'BuyController@placeOrder');
+Route::post('/buy/{id}', 'BuyController@addItemToCart')->where('id', '[0-9]+');
+Route::post('/buy/update/{rowId}', 'BuyController@updateItemInCart')->where('rowId', '[a-z0-9_]+');
+Route::post('/buy/remove/{rowId}', 'BuyController@removeItemFromCart');
+Route::post('/buy/checkout', 'BuyController@checkout');
+Route::post('/buy/destroy', 'BuyController@destroy');
 Route::get('/buy/cart', 'BuyController@showCart');
 
 // detail route filter
