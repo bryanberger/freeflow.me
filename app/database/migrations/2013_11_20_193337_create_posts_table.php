@@ -17,8 +17,10 @@ class CreatePostsTable extends Migration {
 			$table->string('name', 64)->unique();
 			$table->string('tags'); // comma delimited
 			$table->string('filename');
+			$table->string('psd');
 			$table->boolean('hasWallpaper');
 			$table->boolean('hasBuyOptions');
+			$table->boolean('hasPsd');
 			$table->timestamps();
 		});
 	}

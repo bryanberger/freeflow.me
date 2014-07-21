@@ -90,8 +90,8 @@ $(function(){
 
 		// call buy service
 		handler.open({
-			name: 'Freeflow piece(s)',
-			description: desc,
+			name: 'Freeflow.me',
+			description: $('.cart-quantity').text() + ' print(s) ($' + total + ')',
 			amount: total * 100
 		});
 
@@ -235,29 +235,29 @@ $(function(){
 
 	function removeAllItems()
 	{
-		// $('.product').each(function () {
-		// 	$(this).remove();
-		// });
+		$('.product').each(function () {
+			$(this).remove();
+		});
 
-		// // destroy cart
-		// $.ajax({
-		// 	url: '/buy/destroy/',
-		// 	type: 'post',
-		// 	success: function(data) {
-		// 		json = JSON.parse(data);
+		// destroy cart
+		$.ajax({
+			url: '/buy/destroy/',
+			type: 'post',
+			success: function(data) {
+				json = JSON.parse(data);
 
-		// 		if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
-		// 			console.log("Items Removed!");
-		// 			updateQuantityIcon(json.success);
-		// 		} else {
-		// 			console.log("Items Removed Error...");
-		// 		}
+				if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
+					console.log("Items Removed!");
+					updateQuantityIcon(json.success);
+				} else {
+					console.log("Items Removed Error...");
+				}
 
-		// 	},
-		// 	error: function(data) {
-		// 		console.log("Ajax Error!");
-		// 	}
-		// });
+			},
+			error: function(data) {
+				console.log("Ajax Error!");
+			}
+		});
 	}
 
 	recalculateCart();

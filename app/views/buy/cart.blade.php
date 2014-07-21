@@ -47,10 +47,6 @@
 			<label>Subtotal</label>
 			<div class="totals-value" id="cart-subtotal">{{ $total }}</div>
 		</div>
-		<!-- <div class="totals-item">
-		<label>Tax (5%)</label>
-		<div class="totals-value" id="cart-tax">3.60</div>
-		</div> -->
 		<div class="totals-item">
 			<label>Shipping</label>
 			<div class="totals-value" id="cart-shipping"></div>

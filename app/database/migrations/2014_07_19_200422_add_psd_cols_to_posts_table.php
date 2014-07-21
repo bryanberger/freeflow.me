@@ -26,7 +26,7 @@ class AddPsdColsToPostsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('festivals', function($table)
+		Schema::table('posts', function($table)
 		{
 			$table->dropColumn('psd');
 			$table->dropColumn('hasPsd');

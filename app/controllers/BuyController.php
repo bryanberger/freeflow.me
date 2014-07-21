@@ -155,7 +155,7 @@ class BuyController extends \BaseController {
 				$token		= Input::get('token');
 				$email		= Input::get('email');
 				$card		= Input::get('card');
-				$customer	= "";
+
 				// shipping address country check (we will charge the proper ammount)
 				$shipping	= $this->_getShipping($card['address_country']);
 				$items		= Cart::content();
@@ -164,17 +164,38 @@ class BuyController extends \BaseController {
 					$desc .= "(" . $item->qty . "x - " . $item->name . " " . $item->options->desc . ") ";
 				}
 
-				if($card['id']) {
-					$customer = $card;
-				} else {
+				//print_r($card);
+				//return;
+
+				// See if we have this customer already by email. If so save this charge to their Stripe Customer account.
+				$customer = Customer::where('email', $email)->first();
+
+				// If we don't have this customer, create a new one with Stripe and with our DB.
+				if(!$customer) {
 					$customer = Stripe_Customer::create(array(
 						'email' => $email,
 						'card'  => $token
 					));
+
+					// build a customer and save
+					// should sanitize all of this data as we are taking it from the stripe callback as fact.
+					$newCustomer = new Customer;
+					$newCustomer->name = isset($card['name']) ? $card['name'] : '';
+					$newCustomer->email = $email;
+					$newCustomer->stripe_id = $customer->id;
+					$newCustomer->address_line1 = isset($card['address_line1']) ? $card['address_line1'] : '';
+					$newCustomer->address_line2 = isset($card['address_line2']) ? $card['address_line2'] : '';
+					$newCustomer->address_city = isset($card['address_city']) ? $card['address_city'] : '';
+					$newCustomer->address_state = isset($card['address_state']) ? $card['address_state'] : '';
+					$newCustomer->address_zip = isset($card['address_zip']) ? $card['address_zip'] : '';
+					$newCustomer->address_country = isset($card['address_country']) ? $card['address_country'] : '';
+					$newCustomer->save();
+
+					$customer = $newCustomer;
 				}
 
 				$charge = Stripe_Charge::create(array(
-					'customer'		=> $customer->id,
+					'customer'		=> $customer->stripe_id,
 					'amount'		=> (Cart::total()*100) + $shipping,
 					'description'	=> $desc,
 					'currency'		=> 'usd'
