@@ -94,7 +94,7 @@ class ViewController extends \BaseController {
 	}
 
 	private function _getCDNPath($name) {
-		return 'assets/imgs/art/';
+		//return 'assets/imgs/art/';
 		
 		if($name === NULL) {
 			$name = 'humhum_560'; // humhum is the smallest image filesize wise.
@@ -112,7 +112,7 @@ class ViewController extends \BaseController {
 
 		// if dropbox has blocked us because of bandwidth limits, use local files
 		if($status_code === 509 || $status_code  === 404) {
-			$cdn_path = 'assets/imgs/art/';
+			$cdn_path = 'http://freeflow.me/assets/imgs/art/';
 		} else {
 			$cdn_path = 'http://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/';
 		}
