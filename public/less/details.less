@@ -8,13 +8,20 @@ hr {
 	background-color: #ccc;
 }
 
-.details {
-	padding-left: 40px;
+.details-container {
 	.clearfix();
 }
 
-.details .title {
+// .detail-col {
+// 	.clearfix();
+// }
 
+.details {
+	padding-left: 40px;
+	//.clearfix();
+}
+
+.details .title {
 	.clearfix();
 }
 
@@ -122,6 +129,103 @@ td.print-price {
 	padding: 0;
 }
 
+/* special button */
+.button {
+  position: relative;
+  display: block;
+  width: 95px;
+  height: 30px;
+  text-align: center;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+.button .addtocart {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: translateZ(-100px);
+  transform: translateZ(-100px);
+  -webkit-transition: -webkit-transform 300ms;
+  transition: transform 300ms;
+  cursor: pointer;
+}
+
+.button .addtocart > div {
+  position: absolute;
+  display: block;
+  width: 95px;
+  height: 30px;
+  // border-radius: 0 2px 2px 0;
+  line-height: 32px;
+}
+
+.button .addtocart > .add {
+  background: @linkColor;
+  color: #fff;
+  -webkit-transform: rotateY(0deg) translateZ(15px);
+  transform: rotateY(0deg) translateZ(15px);
+  -webkit-transition: background 150ms ease-out;
+  transition: background 150ms ease-out;
+}
+
+.button .addtocart > .add:hover {
+  background: @linkHoverColor;
+  color: #fff;
+}
+
+.button .addtocart > .added {
+  background: #ff6633;
+  color: #fff;
+  -webkit-transform: rotateX(90deg) translateZ(15px);
+  transform: rotateX(90deg) translateZ(15px);
+}
+
+.button .addtocart.active {
+  -webkit-animation-name: rotate;
+  animation-name: rotate;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+// Keyframe Animations
+@-webkit-keyframes rotate {
+  35% {
+    -webkit-transform: translateZ(-100px) rotateX(-90deg);
+    transform: translateZ(-100px) rotateX(-90deg);
+  }
+
+  72% {
+    -webkit-transform: translateZ(-100px) rotateX(-90deg);
+    transform: translateZ(-100px) rotateX(-90deg);
+  }
+
+  100% {
+    -webkit-transform: translateZ(-100px);
+    transform: translateZ(-100px);
+  }
+}
+@keyframes rotate {
+  35% {
+    -webkit-transform: translateZ(-100px) rotateX(-90deg);
+    transform: translateZ(-100px) rotateX(-90deg);
+  }
+
+  72% {
+    -webkit-transform: translateZ(-100px) rotateX(-90deg);
+    transform: translateZ(-100px) rotateX(-90deg);
+  }
+
+  100% {
+    -webkit-transform: translateZ(-100px);
+    transform: translateZ(-100px);
+  }
+}
+
+
 /* button classes */
 .btn {
 	margin: 0;
@@ -166,4 +270,18 @@ td.print-price {
 
 .btn:hover, .btn:focus {
 	color: #fff;
+}
+
+.extras {
+	margin-top: 2.5em;
+}
+
+.extras h3 {
+	margin-top: 0;
+}
+
+.extras {
+	.grid1 {
+		width: 50%;
+	}
 }

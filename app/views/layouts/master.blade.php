@@ -48,8 +48,24 @@
 					<li><a href="http://twitter.com/bryanberger">{{HTML::image('assets/imgs/twitter.png')}}</a></li>
 					<li><a href="http://facebook.com/bryanbergerdesign">{{HTML::image('assets/imgs/facebook.png')}}</a></li>
 					<li><a href="http://behance.net/bryanberger">{{HTML::image('assets/imgs/behance.png')}}</a></li>
+
+					<li class="cart">
+						<a class="cart-link" href="/buy/cart">
+							<span class="cart-text sprite icnCart"></span>
+							@if ($cart_count == 0)
+							<span class="cart-quantity" style="display:none;">{{ $cart_count }}</span>
+							@else 
+							<span class="cart-quantity">{{ $cart_count }}</span>
+							@endif
+						</a>
+					</li>
 				</ul>
 			</header>
+
+			<!-- will be used to show any messages -->
+			@if (Session::has('message'))
+				<div class="alert alert-error">{{ Session::get('message') }}</div>
+			@endif
 
 			@yield('content')
 

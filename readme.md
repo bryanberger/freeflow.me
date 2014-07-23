@@ -22,3 +22,9 @@
 
 ### Step 4: To build the css from less files run (get grunt)
 	grunt
+
+
+### How to add columns to existing tables
+	php artisan migrate:make add_column_name_to_xyz_table
+	fill in the schema
+	php artisan migrate

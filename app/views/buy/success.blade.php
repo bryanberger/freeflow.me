@@ -1,0 +1,1 @@
+<h2>Success, Check your email for your order confirmation</h2>

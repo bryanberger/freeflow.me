@@ -109,6 +109,8 @@ return array(
 
 		// custom
 		'Roumen\Sitemap\SitemapServiceProvider',
+		'Abodeo\LaravelStripe\LaravelStripeServiceProvider',
+		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider'
 	),
 
 	/*
@@ -174,6 +176,9 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+
+		// custom
+		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
 
 	),
 

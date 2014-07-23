@@ -8,3 +8,12 @@
     clear: both;
   }
 }
+
+.opacity(@opacity: 1) {
+	@ieOpacity: @opacity * 100;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieOpacity})";
+	filter: ~"alpha(opacity=@{ieOpacity})";	
+	-webkit-opacity: @opacity;
+	-moz-opacity: @opacity;
+	opacity: @opacity;
+}
