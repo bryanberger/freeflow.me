@@ -470,6 +470,15 @@ ul.social:after {
   color: #fff;
   text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
 }
+.highlight {
+  -webkit-box-shadow: 5px 5px 5px black;
+  -moz-box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px black;
+  -webkit-box-shadow: 0 0 15px red;
+  -moz-box-shadow: 0 0 15px red;
+  box-shadow: 0 0 15px red;
+  border-color: red;
+}
 /* Browse Happy */
 /* ------------------------------------------------------------------------------------ */
 .browsehappy {
@@ -1176,6 +1185,54 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 .totals-item:after {
   clear: both;
 }
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes shake {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translateX(10px);
+  }
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+}
+.shake {
+  -webkit-animation-name: shake;
+  animation-name: shake;
+}
 /* Apply dollar signs */
 .product .product-price:before,
 .product .product-line-price:before,
@@ -1194,6 +1251,12 @@ h2.cart-header a {
 }
 label {
   color: #aaaaaa;
+}
+.shopping-cart h3 {
+  font-size: 1.75em;
+}
+.shopping-cart h3 span {
+  color: #3ca03d;
 }
 #cart-total {
   font-weight: bold;

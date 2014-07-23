@@ -161,11 +161,8 @@ class BuyController extends \BaseController {
 				$items		= Cart::content();
 				$desc		= "";
 				foreach ($items as $item) {
-					$desc .= "(" . $item->qty . "x - " . $item->name . " " . $item->options->desc . ") ";
+					$desc .= "(" . $item->qty . "x - #" . $item->post->id . " " . $item->name . " " . $item->options->desc . ") ";
 				}
-
-				//print_r($card);
-				//return;
 
 				// See if we have this customer already by email. If so save this charge to their Stripe Customer account.
 				$customer = Customer::where('email', $email)->first();
@@ -205,8 +202,7 @@ class BuyController extends \BaseController {
 
 			} catch(Stripe_CardError $e) {
 				// Payment failed
-				return false;
-				//return Redirect::to('/buy/cart')->with('message', 'Your payment has failed.');		
+				return '{"error":"Your Payment has failed. Your Credit Card may have been declined."}';
 			}
 		}
 	}

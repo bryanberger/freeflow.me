@@ -47,8 +47,25 @@ $(function(){
 	}
 	$('.addtocart').on('click', addtocartclick);
 
+	// Checkout click handler
 	$('.checkout').on('click', function(){
-		var printType;
+
+		if($('.country').val() == "--") {
+
+			// highlight error
+			$('.country').addClass('highlight');
+
+			// error
+			$(this).addClass('animated shake');
+			setTimeout(function(){
+				$('.checkout').removeClass('animated shake');
+			}, 1000);
+
+			return;
+		}
+
+		$('.country').removeClass('highlight');
+
 		var desc;
 		var handler = StripeCheckout.configure({
 			key: stripeToken,
@@ -67,7 +84,7 @@ $(function(){
 
 						if (typeof json.success !== 'undefined') {
 							console.log("Card successfully charged!");
-							$('.shopping-cart').html('<h3>Success! Check your email for your order confirmation.</h3>');
+							$('.shopping-cart').html('<h3><span>Success!</span> Check your email for your order confirmation.</h3><p>We use a 3rd party printing company to produce the freeflows. Typically orders will take 5-10 business days for a complete turnaround.</p><p>The smaller 12x12" prints ship flat. The larger 24x24" prints ship in a heavy duty tube.</p>');
 							removeAllItems();
 						} else {
 							console.log("Success Error...");
@@ -105,6 +122,12 @@ $(function(){
 	});
 
 	$('select.country').change( function() {
+		if($(this).val() != "--") {
+			$('.country').removeClass('highlight');
+		} else {
+			$('.country').addClass('highlight');
+		}
+
 	  	recalculateCart();
 	});
 

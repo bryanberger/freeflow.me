@@ -21,6 +21,29 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   .clearfix();
 }
 
+// shake anim
+.animated { 
+    -webkit-animation-duration: 1s; 
+    animation-duration: 1s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+} 
+
+@-webkit-keyframes shake { 
+    0%, 100% {-webkit-transform: translateX(0);} 
+    10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);} 
+    20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);} 
+} 
+@keyframes shake { 
+    0%, 100% {transform: translateX(0);} 
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);} 
+    20%, 40%, 60%, 80% {transform: translateX(10px);} 
+} 
+.shake { 
+    -webkit-animation-name: shake; 
+    animation-name: shake; 
+}
+
 
 /* Apply dollar signs */
 .product .product-price:before, .product .product-line-price:before, .totals-value:before {
@@ -44,6 +67,15 @@ label {
 
 .shopping-cart {
 }
+
+.shopping-cart h3 {
+  font-size: 1.75em;
+}
+
+.shopping-cart h3 span {
+  color: @linkColor;
+}
+
 
 #cart-total {
 	font-weight: bold;
