@@ -1,24 +1,17 @@
-// cart.js
-
 $(function(){
-	//var taxRate = 0.05;
 	var shippingRate = 26.00; 
 	var fadeTime = 125;
 	var total;
 
-
 	function updateQuantityIcon(val) {
-		//var curQuantity = parseInt($('.cart-quantity').text());
 		if(val == 0) {
 			$('.cart-quantity').hide();
 			return;
 		}
 
-		//$('.cart-quantity').show();
 		$('.cart-quantity').fadeOut(250, function(){
 			$(this).fadeIn(250);
 			$('.cart-quantity').text(val);
-			//$('.cart-quantity').text(curQuantity+1);
 		});
 	}
 
@@ -235,10 +228,6 @@ $(function(){
 
 	function removeAllItems()
 	{
-		$('.product').each(function () {
-			$(this).remove();
-		});
-
 		// destroy cart
 		$.ajax({
 			url: '/buy/destroy/',
@@ -248,6 +237,9 @@ $(function(){
 
 				if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
 					console.log("Items Removed!");
+					$('.product').each(function () {
+						$(this).remove();
+					});
 					updateQuantityIcon(json.success);
 				} else {
 					console.log("Items Removed Error...");
@@ -261,7 +253,6 @@ $(function(){
 	}
 
 	recalculateCart();
-
 });;// events
 $(function() {
 

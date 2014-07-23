@@ -201,7 +201,6 @@ class BuyController extends \BaseController {
 					'currency'		=> 'usd'
 				));
 				
-				//Session::put('purchased_download_id', $download->id);
 				return '{"success":"charged"}';
 
 			} catch(Stripe_CardError $e) {
@@ -210,9 +209,6 @@ class BuyController extends \BaseController {
 				//return Redirect::to('/buy/cart')->with('message', 'Your payment has failed.');		
 			}
 		}
-
-		//return '{"success":1}'; // success or fail page
-		//return View::make('buy.success');
 	}
 
 	private function _getShipping($country)

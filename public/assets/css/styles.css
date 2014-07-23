@@ -1331,6 +1331,11 @@ label {
   text-align: center;
   font-size: 1.2em;
 }
+.required {
+  vertical-align: middle;
+  font-size: 1.5em;
+  color: red;
+}
 /* Make more adjustments for phone */
 @media screen and (max-width: 350px) {
   .product-removal {
