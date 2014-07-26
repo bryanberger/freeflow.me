@@ -34,7 +34,7 @@
 		<div class="product-line-price">{{ $item->subtotal }}</div>
 	</div>
 	@endforeach
-	<div class="shipping">
+	<div class="grid1 shipping">
 		<span><span class="required">*</span>Delivery Country:</span>
 		<select class="country" name="country">
 			<option value="--">--</option>
