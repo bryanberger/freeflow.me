@@ -56,7 +56,8 @@ class AdminController extends \BaseController {
 			'filename'		=> 'required|alpha_num',
 			'tags'		 	=> 'required|regex:/^[a-z,0-9 ]+$/i',
 			'hasWallpaper'	=> 'digits:1',
-			'hasBuyOptions'	=> 'digits:1'
+			'hasBuyOptions'	=> 'digits:1',
+			'hasPsd'		=> 'digits:1'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 
@@ -73,6 +74,13 @@ class AdminController extends \BaseController {
 			$post->tags			 = Input::get('tags');
 			$post->hasWallpaper  = Input::get('hasWallpaper', 0);
 			$post->hasBuyOptions = Input::get('hasBuyOptions', 0);
+			$post->hasPsd		 = Input::get('hasBuyOptions', 0);
+
+			// extract color palette
+			$image = ColorExtractor::loadJpeg(public_path() . '/assets/imgs/art/' . $post->filename . '_560.jpg');
+			$post->palette = serialize($image->extract(8));
+
+			// save to DB
 			$post->save();
 
 			// clear cache
@@ -127,7 +135,8 @@ class AdminController extends \BaseController {
 			'filename'		=> 'required|alpha_num',
 			'tags'		 	=> 'required|regex:/^[a-z,0-9 ]+$/i',
 			'hasWallpaper'	=> 'digits:1',
-			'hasBuyOptions'	=> 'digits:1'
+			'hasBuyOptions'	=> 'digits:1',
+			'hasPsd'		=> 'digits:1'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 
@@ -144,7 +153,17 @@ class AdminController extends \BaseController {
 			$post->filename		 = strtolower(Input::get('filename'));
 			$post->hasWallpaper  = Input::get('hasWallpaper', 0);
 			$post->hasBuyOptions = Input::get('hasBuyOptions', 0);
+			$post->hasPsd		 = Input::get('hasBuyOptions', 0);
+
+			// extract color palette
+			$image = ColorExtractor::loadJpeg(public_path() . '/assets/imgs/art/' . $post->filename . '_560.jpg');
+			$post->palette = serialize($image->extract(8));
+
+			// save to DB
 			$post->save();
+
+			// clear cache
+			Cache::flush();
 
 			// redirect
 			Session::flash('message', 'Successfully updated ' . $post->name);
