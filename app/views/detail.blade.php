@@ -26,6 +26,12 @@
 		@endforeach
 		</ul>
 
+		<ul class="palette">
+		@foreach ($palette as $hex)
+			<li class="color" style="background-color:{{ $hex }}" title="{{ $hex }}"></li>
+		@endforeach
+		</ul>
+
 		<hr>
 
 		@if ($post->hasBuyOptions)

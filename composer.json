@@ -8,7 +8,8 @@
 		"rmccue/requests": ">=1.0",
 		"roumen/sitemap": "dev-master",
 		"abodeo/laravel-stripe": "dev-master",
-		"gloudemans/shoppingcart": "dev-master"
+		"gloudemans/shoppingcart": "dev-master",
+		"league/color-extractor": "0.1.*"
 	},
 	"autoload": {
 		"classmap": [

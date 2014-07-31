@@ -37,6 +37,10 @@
 				{{ Form::label('hasBuyOptions', 'For Sale?') }}
 				{{ Form::checkbox('hasBuyOptions', '1') }}
 			</div>
+			<div class="checkbox">
+				{{ Form::label('hasPsd', 'Psd?') }}
+				{{ Form::checkbox('hasPsd', '1') }}
+			</div>
 		</div>
 	</div>
 

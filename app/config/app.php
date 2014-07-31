@@ -110,7 +110,8 @@ return array(
 		// custom
 		'Roumen\Sitemap\SitemapServiceProvider',
 		'Abodeo\LaravelStripe\LaravelStripeServiceProvider',
-		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider'
+		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
+		'League\ColorExtractor\Laravel\ColorExtractorServiceProvider'
 	),
 
 	/*
@@ -179,6 +180,7 @@ return array(
 
 		// custom
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
+		'ColorExtractor'  => 'League\ColorExtractor\Laravel\ColorExtractorFacade'
 
 	),
 

@@ -679,6 +679,24 @@ ul.tags:after {
   background: #333;
   color: #fff;
 }
+ul.palette {
+  margin-bottom: 20px;
+}
+ul.palette:before,
+ul.palette:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+ul.palette:after {
+  clear: both;
+}
+.palette .color {
+  float: left;
+  width: 2em;
+  height: 1.25em;
+}
 .sale,
 .buy-options {
   margin-top: 20px;

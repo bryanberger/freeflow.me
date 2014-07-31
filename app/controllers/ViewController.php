@@ -79,6 +79,10 @@ class ViewController extends \BaseController {
 			'pageNumUri'=> ($curPage === 1) ? NULL : '?page=' . $curPage
 		);
 
+		// colors
+		$image = ColorExtractor::loadJpeg(public_path() . '/assets/imgs/art/' . $post->filename . '_560.jpg');
+		$palette = $image->extract(8);
+
 		$args = array(
 			'meta' 		=> $meta,
 			'post' 		=> $post,
@@ -87,6 +91,7 @@ class ViewController extends \BaseController {
 			'max_days' 	=> $max_days,
 			'cdn_path' 	=> $cdn_path,
 			'prev4'		=> $prev4,
+			'palette'	=> $palette,
 			'cart_count'=> Cart::count()
 		);
 
