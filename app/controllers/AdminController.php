@@ -78,7 +78,7 @@ class AdminController extends \BaseController {
 
 			// extract color palette
 			$image = ColorExtractor::loadJpeg(public_path() . '/assets/imgs/art/' . $post->filename . '_560.jpg');
-			$post->palette = serialize($image->extract(8));
+			$post->palette = $image->extract(8);
 
 			// save to DB
 			$post->save();
@@ -157,7 +157,7 @@ class AdminController extends \BaseController {
 
 			// extract color palette
 			$image = ColorExtractor::loadJpeg(public_path() . '/assets/imgs/art/' . $post->filename . '_560.jpg');
-			$post->palette = serialize($image->extract(8));
+			$post->palette = $image->extract(8);
 
 			// save to DB
 			$post->save();
