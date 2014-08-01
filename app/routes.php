@@ -60,3 +60,21 @@ Route::get('{name}', array(
 // 	'uses'	 => 'ViewController@showDetail',
 // 	'before' => 'postExists'))
 // 		->where('name', '[a-z]+');
+
+
+
+Route::get('addColors', function()
+{
+	set_time_limit(360);
+
+	$posts = Post::all();
+
+	// for each post find out the color scheme and serialize store it in the palette column
+	foreach ($posts as $post) {
+		$image = ColorExtractor::loadJpeg(public_path() . '/assets/imgs/art/' . $post->filename . '_560.jpg');
+		$post->palette = $image->extract(8);
+		$post->update();
+	}
+
+	return "done.";
+});

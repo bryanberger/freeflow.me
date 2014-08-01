@@ -26,11 +26,13 @@
 		@endforeach
 		</ul>
 
+		@if($post->palette)
 		<ul class="palette">
-		@foreach ($palette as $hex)
+		@foreach ($post->palette as $hex)
 			<li class="color" style="background-color:{{ $hex }}" title="{{ $hex }}"></li>
 		@endforeach
 		</ul>
+		@endif
 
 		<hr>
 
