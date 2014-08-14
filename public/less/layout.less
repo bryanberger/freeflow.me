@@ -62,18 +62,38 @@ ul#tmbs {
 }
 
 .column a {
+	overflow: hidden; /* so -bottom animation will not overlay other items */
 	display: block;
 }
 
-.num {
+.title {
 	position: absolute;
-	font-size: 0.8em;
+	font-size: 1em;
 	font-style: italic;
-	top: 0;
+	bottom: -32px;
 	left: 0;
-	background: #222;
+	background: #121212;
 	color: #fff;
-	padding: 0.5em;
+	text-align: center;
+	width: 100%;
+	
+	.transition(0.3s);
+	.opacity(0);
+
 	z-index: 1;
+}
+
+.title div {
+	display: inline-block;
+	padding: 1em;
+	margin: 0 auto;
+}
+
+.title span.num {
+	color: @linkColor;
+}
+
+.column a:hover .title {
+	bottom: 0;
 	.opacity(0.9);
 }

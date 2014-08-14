@@ -552,18 +552,42 @@ ul#tmbs {
   position: relative;
 }
 .column a {
+  overflow: hidden;
+  /* so -bottom animation will not overlay other items */
   display: block;
 }
-.num {
+.title {
   position: absolute;
-  font-size: 0.8em;
+  font-size: 1em;
   font-style: italic;
-  top: 0;
+  bottom: -32px;
   left: 0;
-  background: #222;
+  background: #121212;
   color: #fff;
-  padding: 0.5em;
+  text-align: center;
+  width: 100%;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
   z-index: 1;
+}
+.title div {
+  display: inline-block;
+  padding: 1em;
+  margin: 0 auto;
+}
+.title span.num {
+  color: #3ca03d;
+}
+.column a:hover .title {
+  bottom: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
   filter: alpha(opacity=90);
   -webkit-opacity: 0.9;
