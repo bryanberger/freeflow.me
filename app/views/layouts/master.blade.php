@@ -69,6 +69,23 @@
 
 			@yield('content')
 
+			<section class="signup">
+				<!-- Begin MailChimp Signup Form -->
+				<form action="//bryanberger.us8.list-manage.com/subscribe/post?u=44edf3fa66250f750de0d061c&amp;id=fcae190381" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+					<h3>Subscribe for <i>free</i> stuff.</h3>
+					<div class="mc-field-group">
+						<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address">
+						<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="subscribe">
+					</div>
+					<div id="mce-responses" class="clear">
+						<div class="response" id="mce-error-response" style="display:none"></div>
+						<div class="response" id="mce-success-response" style="display:none"></div>
+					</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+				    <div style="position: absolute; left: -5000px;"><input type="text" name="b_44edf3fa66250f750de0d061c_fcae190381" tabindex="-1" value=""></div>
+				    
+				</form>
+				<!--End mc_embed_signup-->
+			</section>
 		</main>
 
 		<footer>
