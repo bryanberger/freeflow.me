@@ -556,7 +556,7 @@ ul#tmbs {
   /* so -bottom animation will not overlay other items */
   display: block;
 }
-.title {
+.column .title {
   position: absolute;
   font-size: 1em;
   font-style: italic;
@@ -578,12 +578,12 @@ ul#tmbs {
   opacity: 0;
   z-index: 1;
 }
-.title div {
+.column .title div {
   display: inline-block;
   padding: 1em;
   margin: 0 auto;
 }
-.title span.num {
+.column .title span.num {
   color: #3ca03d;
 }
 .column a:hover .title {
