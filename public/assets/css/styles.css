@@ -547,6 +547,29 @@ ul#tmbs {
   position: relative;
   -ms-interpolation-mode: bicubic;
 }
+.column,
+.column a {
+  position: relative;
+}
+.column a {
+  display: block;
+}
+.num {
+  position: absolute;
+  font-size: 0.8em;
+  font-style: italic;
+  top: 0;
+  left: 0;
+  background: #222;
+  color: #fff;
+  padding: 0.5em;
+  z-index: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
+  -webkit-opacity: 0.9;
+  -moz-opacity: 0.9;
+  opacity: 0.9;
+}
 .sprite {
   display: inline-block;
   overflow: hidden;

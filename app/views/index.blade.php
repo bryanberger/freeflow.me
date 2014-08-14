@@ -6,7 +6,7 @@
 
 @if($posts->getCurrentPage() === 1)
 	@if ($i === 0)
-		<li class="column grid-first"><a href="/{{ $p->filename }}"><img src="{{ $cdn_path . $p->filename}}_560.jpg"></a></li>
+		<li class="column grid-first"><a href="/{{ $p->filename }}"><div class="num">{{ $p->id . " of 365"}}</div><img src="{{ $cdn_path . $p->filename}}_560.jpg"></a></li>
 	@elseif ($i === 1)
 		<li class="column grid1 alt1 alt2"><a href="/{{ $p->filename }}"><img src="{{ $cdn_path . $p->filename}}_560.jpg"></a></li>
 	@elseif ($i === 2)
