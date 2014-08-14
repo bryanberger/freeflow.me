@@ -1023,7 +1023,7 @@ td.print-price {
     width: 100%;
   }
   .mc-field-group input.email {
-    width: 66%;
+    width: 59%;
   }
 }
 @media only screen and (min-width: 320px) and (max-width: 510px) {
@@ -1072,12 +1072,6 @@ td.print-price {
   }
   .details .date {
     margin: 20px 0 10px;
-  }
-  .signup {
-    width: 100%;
-  }
-  .mc-field-group input.email {
-    width: 66%;
   }
 }
 @media only screen and (min-width: 510px) and (max-width: 600px) {
