@@ -12,7 +12,7 @@ class ViewController extends \BaseController {
 	{	
 		$posts 		= Post::orderBy('created_at', 'DESC')->paginate( 32 ); // with 365 should produce 5 links + 2 arrows
 		$count 		= count($posts);
-		$cdn_path 	= $this->_getCDNPath(NULL);
+		$cdn_path 	= $this->getCDNPath(NULL);
 
 		// meta
 		$meta = (object) array(
@@ -67,7 +67,7 @@ class ViewController extends \BaseController {
 		];
 
 		// get cdn path
-		$cdn_path = $this->_getCDNPath('840/'.$post->filename.'_840');
+		$cdn_path = $this->getCDNPath('840/'.$post->filename.'_840');
 
 		// current page
 		$curPage  = Session::get('curPage');
@@ -92,32 +92,5 @@ class ViewController extends \BaseController {
 		);
 
 		return View::make('detail', $args);
-	}
-
-	private function _getCDNPath($name) {
-		//return 'assets/imgs/art/';
-		
-		if($name === NULL) {
-			$name = 'humhum_560'; // humhum is the smallest image filesize wise.
-		}
-
-		// check if cached
-		if (Cache::has('dropbox_status_code')) {
-			$status_code = Cache::get('dropbox_status_code');
-		} else {
-			// we don't have a cached status_code so grab one and store it for a few hours
-			$request = Requests::get('http://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'.$name.'.jpg');
-			$status_code = $request->status_code;
-			Cache::put('dropbox_status_code', $status_code, 60);
-		}
-
-		// if dropbox has blocked us because of bandwidth limits, use local files
-		if($status_code === 509 || $status_code  === 404) {
-			$cdn_path = 'http://freeflow.me/assets/imgs/art/';
-		} else {
-			$cdn_path = 'http://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/';
-		}
-
-		return $cdn_path;
 	}
 }

@@ -22,7 +22,7 @@ class AdminController extends \BaseController {
 		$posts = Post::orderBy('created_at', 'DESC')->get();
 		$args = array(
 			'posts' => $posts,
-			'cdn_path' => 'https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'
+			'cdn_path' => $this->getCDNPath();
 		);
 
     	return View::make('admin.index', $args);
