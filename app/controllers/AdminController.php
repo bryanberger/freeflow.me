@@ -22,7 +22,7 @@ class AdminController extends \BaseController {
 		$posts = Post::orderBy('created_at', 'DESC')->get();
 		$args = array(
 			'posts' => $posts,
-			'cdn_path' => $this->getCDNPath();
+			'cdn_path' => $this->getCDNPath(NULL)
 		);
 
     	return View::make('admin.index', $args);
