@@ -74,7 +74,7 @@ class AdminController extends \BaseController {
 			$post->tags			 = Input::get('tags');
 			$post->hasWallpaper  = Input::get('hasWallpaper', 0);
 			$post->hasBuyOptions = Input::get('hasBuyOptions', 0);
-			$post->hasPsd		 = Input::get('hasBuyOptions', 0);
+			$post->hasPsd		 = Input::get('hasPsd', 0);
 
 			// extract color palette
 			$image = ColorExtractor::loadJpeg(public_path() . '/assets/imgs/art/' . $post->filename . '_560.jpg');
@@ -153,7 +153,7 @@ class AdminController extends \BaseController {
 			$post->filename		 = strtolower(Input::get('filename'));
 			$post->hasWallpaper  = Input::get('hasWallpaper', 0);
 			$post->hasBuyOptions = Input::get('hasBuyOptions', 0);
-			$post->hasPsd		 = Input::get('hasBuyOptions', 0);
+			$post->hasPsd		 = Input::get('hasPsd', 0);
 
 			// extract color palette
 			$image = ColorExtractor::loadJpeg(public_path() . '/assets/imgs/art/' . $post->filename . '_560.jpg');
