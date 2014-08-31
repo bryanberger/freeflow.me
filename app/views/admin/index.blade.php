@@ -16,6 +16,7 @@
 			<td>Date Posted</td>
 			<td>Has Wallpaper?</td>
 			<td>For Sale?</td>
+			<td>Has PSD?</td>
 			<td>Delete</td>
 		</tr>
 	</thead>
@@ -35,6 +36,13 @@
 			</td>
 			<td>
 				@if ( $post->hasBuyOptions )
+					<div class="btn btn-success"></div>
+				@else
+					<div class="btn btn-warning"></div>
+				@endif
+			</td>
+			<td>
+				@if ( $post->hasPsd )
 					<div class="btn btn-success"></div>
 				@else
 					<div class="btn btn-warning"></div>
