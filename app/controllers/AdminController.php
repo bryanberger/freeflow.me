@@ -115,7 +115,7 @@ class AdminController extends \BaseController {
 		$args = array(
 			'post' => $post,
 			'id' => $id,
-			'cdn_path' => 'https://dl.dropboxusercontent.com/u/584602/freeflow.me/imgs/art/'
+			'cdn_path' => $this->getCDNPath(NULL)
 		);
 		return View::make('admin.edit', $args);
 	}
