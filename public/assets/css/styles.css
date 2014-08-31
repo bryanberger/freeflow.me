@@ -679,6 +679,9 @@ hr {
   color: #ccc;
   background-color: #ccc;
 }
+.detail-col p a.download {
+  font-size: 1em;
+}
 .details-container:before,
 .details-container:after {
   content: " ";
