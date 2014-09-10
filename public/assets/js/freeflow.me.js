@@ -28,14 +28,14 @@ $(function(){
 				json = JSON.parse(data);
 
 				if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
-					console.log("Item Added!");
+					//console.log("Item Added!");
 					updateQuantityIcon(json.success);
 				} else {
-					console.log("Item Failed");
+					//console.log("Item Failed");
 				}
 			},
 			error: function(data) {
-				console.log("Ajax Error!");
+				//console.log("Ajax Error!");
 			}
 		}); // end ajax call
 
@@ -73,7 +73,7 @@ $(function(){
 			billingAddress: false,
 			allowRememberMe: true,
 			zipCode: true,
-			//image: "{{ $cdn_path }}/{{ $post->filename }}_560.jpg",
+			image: "http://freeflow.me/assets/imgs/secure.png",
 			token: function(token, args) {
 				$.ajax({
 					url: '/buy/checkout',
@@ -88,13 +88,13 @@ $(function(){
 							removeAllItems();
 						} else {
 							ga('send', 'event', 'buy', 'checkout', 'error');
-							console.log("Success Error...");
+							//console.log("Success Error...");
 						}
 
 					},
 					error: function(data) {
 						ga('send', 'event', 'buy', 'checkout', 'error');
-						console.log("Ajax Error...");
+						//console.log("Ajax Error...");
 					}
 				});			  
 			}
@@ -205,15 +205,15 @@ $(function(){
 				json = JSON.parse(data);
 
 				if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
-					console.log("Item Quantity updated!");
+					//console.log("Item Quantity updated!");
 					updateQuantityIcon(json.success);
 				} else {
-					console.log("Item Quantity Error...");
+					//console.log("Item Quantity Error...");
 				}
 
 			},
 			error: function(data) {
-				console.log("Ajax Error!");
+				//console.log("Ajax Error!");
 			}
 		});
 	}
@@ -237,15 +237,15 @@ $(function(){
 				json = JSON.parse(data);
 
 				if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
-					console.log("Item Removed!");
+					//console.log("Item Removed!");
 					updateQuantityIcon(json.success);
 				} else {
-					console.log("Item Removed Error...");
+					//console.log("Item Removed Error...");
 				}
 
 			},
 			error: function(data) {
-				console.log("Ajax Error!");
+				//console.log("Ajax Error!");
 			}
 		});
 	}
@@ -261,18 +261,18 @@ $(function(){
 				json = JSON.parse(data);
 
 				if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
-					console.log("Items Removed!");
+					//console.log("Items Removed!");
 					$('.product').each(function () {
 						$(this).remove();
 					});
 					updateQuantityIcon(json.success);
 				} else {
-					console.log("Items Removed Error...");
+					//console.log("Items Removed Error...");
 				}
 
 			},
 			error: function(data) {
-				console.log("Ajax Error!");
+				//console.log("Ajax Error!");
 			}
 		});
 	}
