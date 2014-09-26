@@ -1025,6 +1025,8 @@ td.print-price {
   .signup {
     width: 100%;
   }
+}
+@media only screen and (min-width: 320px) {
   .mc-field-group input.email {
     width: 59%;
   }
@@ -1080,6 +1082,9 @@ td.print-price {
   }
   .details .date {
     margin: 20px 0 10px;
+  }
+  .signup {
+    width: 100%;
   }
 }
 @media only screen and (min-width: 510px) and (max-width: 644px) {
@@ -1385,6 +1390,16 @@ h2.cart-header a {
 label {
   color: #aaaaaa;
 }
+.shopping-cart:before,
+.shopping-cart:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.shopping-cart:after {
+  clear: both;
+}
 .shopping-cart h3 {
   font-size: 1.75em;
 }
@@ -1441,6 +1456,19 @@ label {
   background-color: #a44;
 }
 /* Totals section */
+.totals {
+  clear: both;
+}
+.totals:before,
+.totals:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.totals:after {
+  clear: both;
+}
 .totals .totals-item {
   float: right;
   clear: both;
@@ -1518,25 +1546,29 @@ label {
   margin-bottom: 2em;
   text-align: left;
   float: right;
+  clear: both;
 }
+.shipping label,
 .shipping span {
   text-align: left;
   padding-right: 0.5em;
+  color: #555;
 }
-.shipping select {
+.shipping select,
+.shipping input {
   width: 100%;
 }
 .empty-cart {
   text-align: center;
   font-size: 1.2em;
 }
-.required {
+.shipping span.required {
   vertical-align: middle;
   font-size: 1.5em;
   color: red;
 }
 /* Make more adjustments for phone */
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
   .product-removal {
     float: right;
   }

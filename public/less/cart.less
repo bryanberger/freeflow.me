@@ -66,6 +66,7 @@ label {
 }
 
 .shopping-cart {
+  .clearfix();
 }
 
 .shopping-cart h3 {
@@ -144,6 +145,11 @@ label {
 
 /* Totals section */
 .totals {
+  .clearfix();
+  clear: both;
+    //  overflow: hidden;
+    // clear: right;
+
   .totals-item {
     float: right;
     clear: both;
@@ -241,14 +247,19 @@ label {
 	margin-bottom: 2em;
 	text-align: left;
 	float: right;
+  clear: both;
+  //.clearfix();
 }
 
+.shipping label,
 .shipping span {
 	text-align: left;
 	padding-right: 0.5em;
+  color: #555;
 }
 
-.shipping select {
+.shipping select,
+.shipping input {
   width: 100%;
 }
 
@@ -257,7 +268,7 @@ label {
   font-size: 1.2em;
 }
 
-.required {
+.shipping span.required {
   vertical-align: middle;
   font-size: 1.5em;
   color: red;
@@ -265,7 +276,7 @@ label {
 
 
 /* Make more adjustments for phone */
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
   
   .product-removal {
     float: right;
@@ -283,6 +294,10 @@ label {
   }
   
   .totals {
+
+    //.clearfix();
+    //clear: left;
+
     .totals-item {
       label {
         width: 60%;

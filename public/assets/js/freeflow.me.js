@@ -84,7 +84,7 @@ $(function(){
 
 						if (typeof json.success !== 'undefined') {
 							ga('send', 'event', 'buy', 'checkout', 'complete');
-							$('.shopping-cart').html('<h3><span>Success!</span> Check your email for your order confirmation.</h3><p>We use a 3rd party printing company to produce the freeflows. Typically orders will take 5-10 business days for a complete turnaround.</p><p>The smaller 12x12" prints ship flat. The larger 24x24" prints ship in a heavy duty tube.</p>');
+							$('.shopping-cart').html('<h3><span>Success!</span> Check your email for your order confirmation.</h3><p>We use a 3rd party printing company to produce the freeflows. Typically orders will take 5-10 business days for a complete turnaround.</p><p>The smaller 12x12" prints ship flat. The larger 24x24" prints ship in a heavy duty tube. We will send you an email with your tracking number once it has shipped!</p>');
 							removeAllItems();
 						} else {
 							ga('send', 'event', 'buy', 'checkout', 'error');
