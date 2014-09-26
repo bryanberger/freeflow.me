@@ -179,14 +179,14 @@ label {
   border: 0;
   margin-top: 20px;
   padding: 6px 25px;
-  background-color: #6b6;
+  background-color: @linkColor;
   color: #fff;
   font-size: 1.5em;
   border-radius: 4px;
 }
 
 .checkout:hover {
-  background-color: #494;
+  background-color: @linkHoverColor;
 }
 
 /* Make adjustments for tablet */
@@ -244,7 +244,7 @@ label {
 }
 
 .shipping {
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 	text-align: left;
 	float: right;
   clear: both;
@@ -256,11 +256,13 @@ label {
 	text-align: left;
 	padding-right: 0.5em;
   color: #555;
+  vertical-align: middle;
 }
 
 .shipping select,
 .shipping input {
   width: 100%;
+  vertical-align: middle;
 }
 
 .empty-cart {
@@ -274,6 +276,17 @@ label {
   color: red;
 }
 
+.coupons {
+  margin-bottom: 2em;
+
+  label {
+    vertical-align: middle;
+  }
+
+  input {
+    vertical-align: middle;
+  }
+}
 
 /* Make more adjustments for phone */
 @media screen and (max-width: 400px) {
@@ -294,10 +307,6 @@ label {
   }
   
   .totals {
-
-    //.clearfix();
-    //clear: left;
-
     .totals-item {
       label {
         width: 60%;

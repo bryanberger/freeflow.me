@@ -137,9 +137,11 @@ class BuyController extends \BaseController {
 	public function checkout()
 	{
 		$rules = array(
-			'token'		=> 'required',
-			'email'		=> 'required|email',
-			'card'		=> 'required|array'
+			'token'			=> 'required',
+			'email'			=> 'required|email',
+			'card'			=> 'required|array',
+			'coupon_id'		=> 'alpha_num',
+			'coupon_value'	=> 'required_with:coupon_id|numeric'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 
@@ -152,9 +154,12 @@ class BuyController extends \BaseController {
 				->withInput();
 		} else {
 			try {
-				$token		= Input::get('token');
-				$email		= Input::get('email');
-				$card		= Input::get('card');
+				$token			= Input::get('token');
+				$email			= Input::get('email');
+				$card			= Input::get('card');
+				$coupon_id		= Input::get('coupon_id');
+				$coupon_value	= Input::get('coupon_value');
+				$applyDiscount	= false;
 
 				// shipping address country check (we will charge the proper ammount)
 				$shipping	= $this->_getShipping($card['address_country']);
@@ -191,9 +196,44 @@ class BuyController extends \BaseController {
 					$customer = $newCustomer;
 				}
 
+				// reference total
+				$total = Cart::total() * 100; // stripe wants no decimals
+
+				// See if we have a coupon in the session, and pull it (remove it while getting its value)
+				$coupon = Session::get('coupon');
+
+				// A user has entered a valid coupon at some point since its in the session
+				if($coupon) {
+					// check if it matches the one sent to us
+					if($coupon->id == $coupon_id && $coupon_value == $coupon_value) {
+						// correct relationship of coupon id to value. apply it.
+						$discount = $total * ($coupon->value/100);
+						$total = $total - $discount;
+
+						// append id to description for use within Stripe
+						$desc .= ' [COUPON: ' . $coupon->id . ']';
+
+						// store it in there customer table, new or old customers
+						$coupons_used = unserialize($customer->coupons_used);
+
+						// if the unserialized value is an array, push onto it or direct assign it as a serialized array.
+						if(is_array($coupons_used)) {
+							array_push($coupons_used, $coupon->id);
+						} else {
+							$coupons_used = array($coupon_id);
+						}
+
+						$customer->coupons_used = serialize($coupons_used);
+						$customer->save();
+					}
+
+					// forget session value regardless.
+					Session::forget('coupon');
+				}
+
 				$charge = Stripe_Charge::create(array(
 					'customer'		=> $customer->stripe_id,
-					'amount'		=> (Cart::total()*100) + $shipping,
+					'amount'		=> $total + $shipping,
 					'description'	=> $desc,
 					'currency'		=> 'usd'
 				));
@@ -205,6 +245,35 @@ class BuyController extends \BaseController {
 				return '{"error":"Your Payment has failed. Your Credit Card may have been declined."}';
 			}
 		}
+	}
+
+	public function validateCoupon()
+	{
+		$rules = array(
+			'coupon' => 'required|alpha_num'
+		);
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the input
+		if ($validator->fails()) {
+			return '{"error":"invalid coupon."}';
+		} else {
+			$coupon	= strtolower(trim(Input::get('coupon')));
+
+			// hit stripe and ask if the coupon is valid
+			try {
+				$coupon = Stripe_Coupon::retrieve($coupon);
+
+				// store the coupon code and value in the session to be used if they check out, clear this out eventually?
+				Session::put('coupon', (object) array('id' => $coupon->id, 'value' => $coupon->percent_off));
+
+				return '{"success":"' . $coupon->percent_off . '"}';
+
+			} catch(Stripe_InvalidRequestError $e) {
+				return '{"error":"invalid coupon."}';
+			}
+		}
+		return '{"error":"invalid coupon."}';
 	}
 
 	private function _getShipping($country)

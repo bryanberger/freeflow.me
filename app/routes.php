@@ -26,6 +26,7 @@ Route::get('sitemap', 'SitemapController@show');
 Route::post('/buy/{id}', 'BuyController@addItemToCart')->where('id', '[0-9]+');
 Route::post('/buy/update/{rowId}', 'BuyController@updateItemInCart')->where('rowId', '[a-z0-9_]+');
 Route::post('/buy/remove/{rowId}', 'BuyController@removeItemFromCart')->where('rowId', '[a-z0-9_]+');
+Route::post('/buy/validate', 'BuyController@validateCoupon');
 Route::post('/buy/checkout', 'BuyController@checkout');
 Route::post('/buy/destroy', 'BuyController@destroy');
 Route::get('/buy/cart', 'BuyController@showCart');

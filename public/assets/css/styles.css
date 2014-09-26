@@ -522,6 +522,12 @@ ul.social:after {
 .mc-field-group input.subscribe:hover {
   background: #43b344;
 }
+.right {
+  float: right !important;
+}
+.left {
+  float: left !important;
+}
 /* Browse Happy */
 /* ------------------------------------------------------------------------------------ */
 .browsehappy {
@@ -636,6 +642,28 @@ ul#tmbs {
   -webkit-opacity: 0.9;
   -moz-opacity: 0.9;
   opacity: 0.9;
+}
+.row {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.row:before,
+.row:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.row:after {
+  clear: both;
+}
+.row .row {
+  width: auto;
+  margin: 0;
+  max-width: none;
 }
 .sprite {
   display: inline-block;
@@ -1489,13 +1517,13 @@ label {
   border: 0;
   margin-top: 20px;
   padding: 6px 25px;
-  background-color: #6b6;
+  background-color: #3ca03d;
   color: #fff;
   font-size: 1.5em;
   border-radius: 4px;
 }
 .checkout:hover {
-  background-color: #494;
+  background-color: #51be52;
 }
 /* Make adjustments for tablet */
 @media screen and (max-width: 650px) {
@@ -1541,7 +1569,7 @@ label {
   }
 }
 .shipping {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   text-align: left;
   float: right;
   clear: both;
@@ -1551,10 +1579,12 @@ label {
   text-align: left;
   padding-right: 0.5em;
   color: #555;
+  vertical-align: middle;
 }
 .shipping select,
 .shipping input {
   width: 100%;
+  vertical-align: middle;
 }
 .empty-cart {
   text-align: center;
@@ -1564,6 +1594,15 @@ label {
   vertical-align: middle;
   font-size: 1.5em;
   color: red;
+}
+.coupons {
+  margin-bottom: 2em;
+}
+.coupons label {
+  vertical-align: middle;
+}
+.coupons input {
+  vertical-align: middle;
 }
 /* Make more adjustments for phone */
 @media screen and (max-width: 400px) {

@@ -2,6 +2,11 @@ $(function(){
 	var shippingRate = 26.00; 
 	var fadeTime = 125;
 	var total;
+	var coupon = {
+		value: 0,
+		code: ""
+	};
+	//var discount = 0;
 
 	function updateQuantityIcon(val) {
 		if(val == 0) {
@@ -14,6 +19,48 @@ $(function(){
 			$('.cart-quantity').text(val);
 		});
 	}
+
+	function shake($highlightElem, $element) {
+		// highlight error
+		$highlightElem.addClass('highlight');
+
+		// error
+		$element.addClass('animated shake');
+		setTimeout(function(){
+			$element.removeClass('animated shake');
+		}, 1000);
+	}
+
+	// coupons
+	$('#applycoupon').on('click', function(){
+		$coupon = $('#coupon');
+
+		$.ajax({
+			url: '/buy/validate',
+			type: 'post',
+			data: {coupon: $coupon.val()},
+			success: function(data) {
+				json = JSON.parse(data);
+
+				if (typeof json.success !== 'undefined' && $.isNumeric(json.success)) {
+					coupon.value = json.success;
+					coupon.id = $coupon.val();
+					$coupon.removeClass('highlight');
+
+					recalculateCart();
+				} else {
+					coupon.value = 0;
+					shake($coupon, $coupon);
+					recalculateCart();
+				}
+			},
+			error: function(data) {
+				coupon.value = 0;
+				shake($coupon, $coupon);
+				recalculateCart();
+			}
+		}); // end ajax call
+	});
 
 	// Trigger animation on Add to Cart button click
 	function addtocartclick() {
@@ -51,16 +98,7 @@ $(function(){
 	$('.checkout').on('click', function(){
 
 		if($('.country').val() == "--") {
-
-			// highlight error
-			$('.country').addClass('highlight');
-
-			// error
-			$(this).addClass('animated shake');
-			setTimeout(function(){
-				$('.checkout').removeClass('animated shake');
-			}, 1000);
-
+			shake($('.country'), $('.checkout'));
 			return;
 		}
 
@@ -78,7 +116,7 @@ $(function(){
 				$.ajax({
 					url: '/buy/checkout',
 					type: 'post',
-					data: {token: token.id, email: token.email, card:token.card},
+					data: {token:token.id, email:token.email, card:token.card, coupon_id:coupon.id, coupon_value:coupon.value},
 					success: function(data) {
 						json = JSON.parse(data);
 
@@ -111,6 +149,10 @@ $(function(){
 	});
 
 	/* Assign actions */
+	$('#coupon').keyup( function() {
+	  $(this).removeClass('highlight');
+	});
+
 	$('.product-quantity input').change( function() {
 	  updateQuantity(this);
 	});
@@ -160,12 +202,13 @@ $(function(){
 	 // var tax = subtotal * taxRate;
 	  var shipping = (subtotal > 0 ? shippingRate : 0);
 	  //var total = subtotal + tax + shipping;
-	  total = subtotal + shipping;
+	  var discountValue = subtotal * (coupon.value/100);
+	  total = (subtotal - discountValue) + shipping;
 	  
 	  /* Update totals display */
 	  $('.totals-value').fadeOut(fadeTime, function() {
 	    $('#cart-subtotal').html(subtotal.toFixed(2));
-	   // $('#cart-tax').html(tax.toFixed(2));
+	    $('#cart-discount').html("-" + discountValue.toFixed(2));
 	    $('#cart-shipping').html(shipping.toFixed(2));
 	    $('#cart-total').html(total.toFixed(2));
 	    if(total == 0){
