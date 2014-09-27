@@ -256,7 +256,7 @@ class BuyController extends \BaseController {
 
 		// process the input
 		if ($validator->fails()) {
-			return '{"error":"invalid coupon."}';
+			return '{"error":"validator failure."}';
 		} else {
 			$coupon	= strtolower(trim(Input::get('coupon')));
 
@@ -273,6 +273,7 @@ class BuyController extends \BaseController {
 				return '{"error":"invalid coupon."}';
 			}
 		}
+		
 		return '{"error":"invalid coupon."}';
 	}
 
