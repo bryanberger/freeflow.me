@@ -211,7 +211,7 @@ class BuyController extends \BaseController {
 						$total = $total - $discount;
 
 						// append id to description for use within Stripe
-						$desc .= ' [COUPON: ' . $coupon->id . ']';
+						//$desc .= ' [COUPON: ' . $coupon->id . ']';
 
 						// store it in there customer table, new or old customers
 						$coupons_used = unserialize($customer->coupons_used);
@@ -231,11 +231,19 @@ class BuyController extends \BaseController {
 					Session::forget('coupon');
 				}
 
+				$metadata = array('uid' => $customer->id);
+
+				if($coupon) {
+					$metadata['coupon_id'] = $coupon->id;
+					$metadata['coupon_value'] = $coupon->value;
+				}
+
 				$charge = Stripe_Charge::create(array(
 					'customer'		=> $customer->stripe_id,
 					'amount'		=> $total + $shipping,
 					'description'	=> $desc,
-					'currency'		=> 'usd'
+					'currency'		=> 'usd',
+					'metadata'		=> $metadata
 				));
 				
 				return '{"success":"charged"}';
