@@ -205,13 +205,10 @@ class BuyController extends \BaseController {
 				// A user has entered a valid coupon at some point since its in the session
 				if($coupon) {
 					// check if it matches the one sent to us
-					if($coupon->id == $coupon_id && $coupon_value == $coupon_value) {
+					if($coupon->id == $coupon_id && $coupon->value == $coupon_value) {
 						// correct relationship of coupon id to value. apply it.
 						$discount = $total * ($coupon->value/100);
 						$total = $total - $discount;
-
-						// append id to description for use within Stripe
-						//$desc .= ' [COUPON: ' . $coupon->id . ']';
 
 						// store it in there customer table, new or old customers
 						$coupons_used = unserialize($customer->coupons_used);
