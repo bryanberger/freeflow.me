@@ -39,7 +39,9 @@
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
 
+		<div id="global">Use coupon code <b>LOVEYOUGUYS</b> when checking out for a 10% discount on all print purchases!</div>
 		<main role="main" class="container">
+			
 			<header>
 				<h1>
 					<a class="logo" href="/@if(isset($meta->pageNumUri)){{ $meta->pageNumUri }}@endif">

@@ -385,6 +385,13 @@ footer {
 footer span {
   font-family: helvetica, arial, sans-serif;
 }
+#global {
+  margin: 0;
+  background: #3ca03d;
+  color: #fff;
+  padding: 0.5em 1em;
+  z-index: 3;
+}
 ul.social {
   float: right;
   padding: 0;
