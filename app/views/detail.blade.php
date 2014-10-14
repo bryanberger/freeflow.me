@@ -72,10 +72,7 @@
 			
 		@else
 			<p class="sale-not-avail">
-			Prints coming soon. <br><br>
-			All prints will be printed on High quality Kodak Professional Endura Paper with a Lustre finish. A half inch white border
-			will be added.<br><br>
-			Available print sizes: 12x12in. and 24x24in.
+			Unfortunately this particular freeflow is not for sale as a print.
 			</p>
 		@endif
 
