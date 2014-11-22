@@ -38,10 +38,11 @@ Route::get('/download/{filename}', function($filename) {
 	}
 
 	$headers = array(
-		'Content-Type: image/jpeg',
+		'Content-Type: image/jpeg'
 	);
+
 	return Response::download($file, $filename, $headers);
-})->where('name', '[a-z0-9._]+');
+})->where('filename', '[a-z0-9._]+');
 
 // detail route filter
 // Route::filter('postExists', function($route) {
