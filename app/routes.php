@@ -31,7 +31,8 @@ Route::post('/buy/checkout', 'BuyController@checkout');
 Route::post('/buy/destroy', 'BuyController@destroy');
 Route::get('/buy/cart', 'BuyController@showCart');
 Route::get('/download/{filename}', function($filename) {
-	$file = public_path() . 'assets/imgs/art/wp/' . $filename;
+	// /var/www/freeflow.me/public
+	$file = public_path() . '/assets/imgs/art/wp/' . $filename;
 
 	if (!is_file($file)) {
 		return Redirect::to('/');
