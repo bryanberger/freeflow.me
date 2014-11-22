@@ -152,8 +152,6 @@ td.print-price {
   width: 95px;
   height: 30px;
   text-align: center;
-  -webkit-perspective: 1000px;
-  perspective: 1000px;
 }
 
 .button .addtocart {
@@ -177,6 +175,7 @@ td.print-price {
   height: 30px;
   // border-radius: 0 2px 2px 0;
   line-height: 32px;
+  border-radius: 4px;
 }
 
 .button .addtocart > .add {
@@ -205,6 +204,13 @@ td.print-price {
   animation-name: rotate;
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
+
+  .add {
+    border-radius: 0 0 4px 4px;
+  }
+  .added {
+  	border-radius: 4px 4px 0 0;
+  }
 }
 
 // Keyframe Animations

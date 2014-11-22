@@ -34,6 +34,13 @@
 		</ul>
 		@endif
 
+		@if ($post->hasWallpaper)
+			<p>
+				<a class="download btn" download data-name="{{ $post->filename }}" title="Download Wallaper" href="download/{{$post->filename . '_2560x1440.jpg' }}">
+					<span class="sprite icnDownload"></span>Download FREE Wallpaper</a>
+			</p>
+		@endif
+
 		<hr>
 
 		@if ($post->hasBuyOptions)
@@ -77,13 +84,6 @@
 		@endif
 
 		<hr>
-
-		@if ($post->hasWallpaper)
-			<p>
-				<a class="download btn" download data-name="{{ $post->filename }}" title="Download Wallaper" href="{{ $cdn_path . 'wp/' .$post->filename . '_2560x1440.jpg' }}">
-					<span class="sprite icnDownload"></span>Download FREE Wallpaper</a> (2560x1440)
-			</p>
-		@endif
 	</div>
 </section>
 

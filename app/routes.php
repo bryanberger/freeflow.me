@@ -30,6 +30,18 @@ Route::post('/buy/validate', 'BuyController@validateCoupon');
 Route::post('/buy/checkout', 'BuyController@checkout');
 Route::post('/buy/destroy', 'BuyController@destroy');
 Route::get('/buy/cart', 'BuyController@showCart');
+Route::get('/download/{filename}', function($filename) {
+	$file = public_path() . '/assets/imgs/art/wp/' . $filename;
+
+	if (!is_file($file)) {
+		return Redirect::to('/');
+	}
+
+	$headers = array(
+		'Content-Type: image/jpeg',
+	);
+	return Response::download($file, $filename, $headers);
+})->where('name', '[a-z0-9._]+');
 
 // detail route filter
 // Route::filter('postExists', function($route) {
