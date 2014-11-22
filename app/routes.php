@@ -31,14 +31,13 @@ Route::post('/buy/checkout', 'BuyController@checkout');
 Route::post('/buy/destroy', 'BuyController@destroy');
 Route::get('/buy/cart', 'BuyController@showCart');
 Route::get('/download/{filename}', function($filename) {
-	$file = public_path() . '/assets/imgs/art/wp/' . $filename;
+	$file = public_path() . 'assets/imgs/art/wp/' . $filename;
 
-	echo $file;
-	// if (!is_file($file)) {
-	// 	return Redirect::to('/');
-	// }
+	if (!is_file($file)) {
+		return Redirect::to('/');
+	}
 
-	// return Response::download($file, $filename);
+	return Response::download($file, $filename);
 })->where('filename', '[a-z0-9._]+');
 
 // detail route filter
