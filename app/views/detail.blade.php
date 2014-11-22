@@ -36,7 +36,7 @@
 
 		@if ($post->hasWallpaper)
 			<p>
-				<a class="download btn" download data-name="{{ $post->filename }}" title="Download Wallaper" href="download/{{$post->filename . '_2560x1440.jpg' }}">
+				<a class="download btn" download data-name="{{ $post->filename }}" title="Download Wallaper" href="{{ $post->filename }}/download">
 					<span class="sprite icnDownload"></span>Download FREE Wallpaper</a>
 			</p>
 		@endif

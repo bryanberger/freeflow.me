@@ -30,44 +30,10 @@ Route::post('/buy/validate', 'BuyController@validateCoupon');
 Route::post('/buy/checkout', 'BuyController@checkout');
 Route::post('/buy/destroy', 'BuyController@destroy');
 Route::get('/buy/cart', 'BuyController@showCart');
-Route::get('/download/{filename}', function($filename) {
-	// /var/www/freeflow.me/public
-	$file = public_path() . '/assets/imgs/art/wp/' . $filename;
-
-	if (!is_file($file)) {
-		return Redirect::to('/');
-	}
-
-	return Response::download($file, $filename);
-})->where('filename', '[a-z0-9._]+');
-
-// detail route filter
-// Route::filter('postExists', function($route) {
-// 	// get route name param
-// 	$name = $route->getParameter('name');
-// 	// see if it exists
-// 	$post = Post::where('filename', $name)->first();
-// 	if (is_null($post))
-// 	{
-// 	   return Redirect::to('/');
-// 	}
-// });
-
-// pagination routes
-// Route::get('page/{page}', function($page)
-// {
-
-// })
-// ->where('page', '[0-9]+');
 
 // detail routes
 Route::get('{name}', array(
 	'as' 	 => 'post',
 	'uses'	 => 'ViewController@showDetail'))
 		->where('name', '[a-z0-9]+');
-
-// Route::get('{name}', array(
-// 	'as' 	 => 'post',
-// 	'uses'	 => 'ViewController@showDetail',
-// 	'before' => 'postExists'))
-// 		->where('name', '[a-z]+');
+Route::get('{name}/download', 'ViewController@download')->where('name', '[a-z0-9]+');

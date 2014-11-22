@@ -93,4 +93,20 @@ class ViewController extends \BaseController {
 
 		return View::make('detail', $args);
 	}
+ 
+	public function download($name) {
+		// /var/www/freeflow.me/public
+		$suffix = '_2560x1440.jpg';
+		$file = public_path() . '/assets/imgs/art/wp/' . $name . $suffix;
+
+		if (!is_file($file)) {
+			return Redirect::to('/');
+		}
+
+		$headers = [
+			'Content-Type: image/jpeg'
+		];
+
+		return Response::download($file, $name.$suffix, $headers);
+	}
 }
