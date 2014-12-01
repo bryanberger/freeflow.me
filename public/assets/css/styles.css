@@ -1540,6 +1540,9 @@ label {
 .checkout:hover {
   background-color: #51be52;
 }
+.stripe {
+  clear: both;
+}
 /* Make adjustments for tablet */
 @media screen and (max-width: 650px) {
   .shopping-cart {

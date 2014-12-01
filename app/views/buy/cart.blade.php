@@ -50,8 +50,7 @@
 			<input id="coupon" type="text" value="" min="">
 			<button id="applycoupon" class="btn">Apply</button>
 		</div>
-	</div>
-	
+	</div>	
 
 	<div class="row totals">
 		<div class="totals-item">
@@ -73,6 +72,8 @@
 	</div>
 
 	<button class="checkout">Checkout</button>
+	<p class="stripe right">{{HTML::image('assets/imgs/stripe.png', 'Powered by Stripe.com', ['width'=>"203", 'height'=>"66"])}}</p>
+	
 	@else
 	<p class="empty-cart">Your Cart is <i>empty</i>. Head back to the <a href="{{ URL::to('/') }}">home page</a> to check out more daily digital artwork.</p>
 	@endif
