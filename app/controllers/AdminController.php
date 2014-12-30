@@ -77,6 +77,7 @@ class AdminController extends \BaseController {
 			$post->hasPsd		 = Input::get('hasPsd', 0);
 
 			// extract color palette
+			set_time_limit(120);
 			$image = ColorExtractor::loadJpeg(public_path() . '/assets/imgs/art/' . $post->filename . '_560.jpg');
 			$post->palette = $image->extract(8);
 
@@ -156,6 +157,7 @@ class AdminController extends \BaseController {
 			$post->hasPsd		 = Input::get('hasPsd', 0);
 
 			// extract color palette
+			set_time_limit(120);
 			$image = ColorExtractor::loadJpeg(public_path() . '/assets/imgs/art/' . $post->filename . '_560.jpg');
 			$post->palette = $image->extract(8);
 
