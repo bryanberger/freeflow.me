@@ -26,8 +26,8 @@
 			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
 			ga('create','UA-640481-18');ga('send','pageview');
 		</script>
-
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
 		{{ HTML::style('assets/css/styles.min.css'); }}
 		<!--[if lt IE 9]>
 			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
