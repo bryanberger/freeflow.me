@@ -38,9 +38,8 @@
 		<!--[if lt IE 8]>
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
-		<div id="global">Use coupon code <b>LOVEYOUGUYS</b> when checking out for a <b>10%</b> discount off your entire cart!</div>
 		<main role="main" class="container">
-			
+
 			<header>
 				<h1>
 					<a class="logo" href="/@if(isset($meta->pageNumUri)){{ $meta->pageNumUri }}@endif">
@@ -55,7 +54,7 @@
 							<span class="cart-text sprite icnCart"></span>
 							@if ($cart_count == 0)
 							<span class="cart-quantity" style="display:none;">{{ $cart_count }}</span>
-							@else 
+							@else
 							<span class="cart-quantity">{{ $cart_count }}</span>
 							@endif
 						</a>
@@ -83,7 +82,7 @@
 						<div class="response" id="mce-success-response" style="display:none"></div>
 					</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 				    <div style="position: absolute; left: -5000px;"><input type="text" name="b_44edf3fa66250f750de0d061c_fcae190381" tabindex="-1" value=""></div>
-				    
+
 				</form>
 				<!--End mc_embed_signup-->
 			</section>
