@@ -43,7 +43,7 @@
 			<header>
 				<h1>
 					<a class="logo" href="/@if(isset($meta->pageNumUri)){{ $meta->pageNumUri }}@endif">
-						{{HTML::image('assets/imgs/logo2.png', 'One Art Piece Daily for a full year. A project from Bryan Berger')}}</a>One flow daily. A project from <a href="http://bryanberger.com/contact">Bryan Berger</a></h1>
+						{{HTML::image('assets/imgs/logo.svg', 'One Art Piece Daily for a full year. A project from Bryan Berger')}}</a>One flow daily. A project from <a href="http://bryanberger.com">Bryan Berger</a></h1>
 				<ul class="social">
 					<li><a href="http://twitter.com/bryanberger">{{HTML::image('assets/imgs/twitter.png')}}</a></li>
 					<li><a href="http://facebook.com/bryanbergerdesign">{{HTML::image('assets/imgs/facebook.png')}}</a></li>
