@@ -103,7 +103,7 @@
 		<script type="text/javascript">
 			document.write(new Date().getFullYear());
 		</script>
-		<a href="https://bryanberger.com">Bryan Berger</a>, <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en_US">Creative Commons BY-NC-ND 4.0</a>. Project inspired by @justinmaller
+		<a href="https://bryanberger.com">Bryan Berger</a>, All Rights Reserved. Verify at bryan@bryanberger.com
 	</footer>
 
 	<!-- custom js -->
